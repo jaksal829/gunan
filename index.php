@@ -3819,19 +3819,7 @@
           new kakao.maps.LatLng(36.03933486,126.8121637),
           new kakao.maps.LatLng(36.03933739,126.8121638),
           new kakao.maps.LatLng(36.06740465,126.870818),
-          new kakao.maps.LatLng(36.13207402,126.8828241),
-          new kakao.maps.LatLng(35.81189793,126.4845517),
-          new kakao.maps.LatLng(35.73755652,126.5197841),
-          new kakao.maps.LatLng(35.69280494,126.5690285),
-          new kakao.maps.LatLng(35.74941457,126.6284261),
-          new kakao.maps.LatLng(35.78630465,126.6222288),
-          new kakao.maps.LatLng(35.79651495,126.7067621),
-          new kakao.maps.LatLng(35.88362404,126.66761),
-          new kakao.maps.LatLng(35.88836484,126.6187891),
-          new kakao.maps.LatLng(35.94248792,126.6163329),
-          new kakao.maps.LatLng(35.94840372,126.5936199),
-          new kakao.maps.LatLng(35.94310577,126.5406624),
-          new kakao.maps.LatLng(35.81189793,126.4845517)
+          new kakao.maps.LatLng(36.13207402,126.8828241)
         ]
     }, {
         name : '제주도',
