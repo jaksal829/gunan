@@ -77,7 +77,7 @@
       border-collapse : collapse;
     }
     th, td{
-      width : 80px;
+      width : 90px;
       text-align : center;
       border : 1px solid black;
     }
