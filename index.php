@@ -91,6 +91,13 @@
       left: 15px;
       padding:2px;
     }
+    .info {
+      font-size: 12px;
+      padding: 5px;
+    }
+    .info .title {
+      font-weight: bold;
+    }
     </style>
     <title>COVID-19</title>
 </head>
@@ -8014,7 +8021,10 @@ function displayArea(area) {
 
     // 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다 
     kakao.maps.event.addListener(polygon, 'click', function(mouseEvent) {
-        var content = '<div class="info">' + '   <div class="title">' + area.name + '</div>' + '   <div class="size">총 면적 : 약 ' + Math.floor(polygon.getArea()) + ' m<sup>2</sup></area>' + '</div>';
+      var content = '<div class="info">' + 
+                    '   <div class="title">' + area.name + '</div>' +
+                    '   <div class="size">총 면적 : 약 ' + Math.floor(polygon.getArea()) + ' m<sup>2</sup></area>' +
+                    '</div>';
 
         infowindow.setContent(content); 
         infowindow.setPosition(mouseEvent.latLng); 
