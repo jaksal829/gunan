@@ -132,11 +132,10 @@
     }?>
     </table>
 
-<a href="http://www.busan.go.kr/corona19/index">출처 : http://www.busan.go.kr/corona19/index</a>
   </div>
   
 </div>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=094c4447e3c1f889a8c14319602db9d5"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f6e4b36ec6c88cd63ebbe33a1dda73f2"></script>
 
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
