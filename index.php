@@ -113,7 +113,6 @@
   </ul>
 </div>
 <div class="container2">
-  <div>
   <?php
     ini_set("allow_url_fopen",1);
     include "simple_html_dom.php";
@@ -130,11 +129,8 @@
             </tr>
             <?php
         }
-        
     }?>
     </table>
-  </div>
-  
 </div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f6e4b36ec6c88cd63ebbe33a1dda73f2"></script>
 <script>
