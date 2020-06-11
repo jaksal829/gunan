@@ -26,7 +26,7 @@
       .container {
         float: left;
         width: 670px;
-        height: 652px;
+        height: 952px;
       }
       .container2 {
         float: left;
@@ -7961,7 +7961,7 @@
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
         center: new kakao.maps.LatLng(36.189320, 128.003166), // 지도의 중심좌표
-        level: 13 // 지도의 확대 레벨
+        level: 12 // 지도의 확대 레벨
         
     };
 // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
@@ -8022,7 +8022,7 @@ function displayArea(area) {
 
     });
 }
-//map.setDraggable(false);
+map.setDraggable(false);
 //map.setZoomable(false);
 </script>
 </body>
