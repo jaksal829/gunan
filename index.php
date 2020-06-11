@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<?php //header('Content-Type: application/json'); ?>
+<?php header('Content-Type: application/json'); ?>
     <meta charset="utf-8">
     <title>다각형에 이벤트 등록하기2</title>
     <style>
