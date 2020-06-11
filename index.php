@@ -40,7 +40,7 @@
      coordinates = val.geometry.coordinates;
      name = val.properties.CTP_KOR_NM;
      
-     displayArea(coordinates, name);
+     //displayArea(coordinates, name);
      var areas = [
         name : name,
         path : [
