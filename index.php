@@ -29,7 +29,6 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f6e4b36ec6c88cd63ebbe33a1dda73f2"></script>
 <script>
-    header('Content-Type: application/json');
 // 지도에 폴리곤으로 표시할 영역데이터 배열입니다 
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
