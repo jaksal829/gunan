@@ -51,7 +51,7 @@ $.getJSON("1234.geojson", function(geojson) {
  $.each(data, function(index, val) {
 
      coordinates = val.geometry.coordinates;
-     name = val.properties.CTP_KOR_NM;
+     name = val.properties.SIG_KOR_NM;
      
      displayArea(coordinates, name);
 
