@@ -6953,17 +6953,7 @@
           new kakao.maps.LatLng(38.22267883,126.9789127),
           new kakao.maps.LatLng(38.21791538,127.0482233),
           new kakao.maps.LatLng(38.24051486,127.0627885),
-          new kakao.maps.LatLng(38.24156895,127.1105458),
-          new kakao.maps.LatLng(37.17382563,126.7888072),
-          new kakao.maps.LatLng(37.16810114,126.7500213),
-          new kakao.maps.LatLng(37.13221465,126.7189865),
-          new kakao.maps.LatLng(37.11163443,126.686122),
-          new kakao.maps.LatLng(37.05627441,126.7562762),
-          new kakao.maps.LatLng(37.12897826,126.7712515),
-          new kakao.maps.LatLng(37.13835917,126.8013673),
-          new kakao.maps.LatLng(37.17382563,126.7888072)
-
-        ]
+          new kakao.maps.LatLng(38.24156895,127.1105458)        ]
     }
 ];
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
