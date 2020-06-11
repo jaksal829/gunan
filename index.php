@@ -29,7 +29,21 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f6e4b36ec6c88cd63ebbe33a1dda73f2"></script>
 <script>
- $.getJSON("korea.geojson", function(geojson) {
+    header('Content-Type: application/json');
+// 지도에 폴리곤으로 표시할 영역데이터 배열입니다 
+
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(36.189320, 128.003166), // 지도의 중심좌표
+        level: 12 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption),
+    customOverlay = new kakao.maps.CustomOverlay({}),
+    infowindow = new kakao.maps.InfoWindow({removable: true});
+
+// 지도에 영역데이터를 폴리곤으로 표시합니다 
+$.getJSON("1234.geojson", function(geojson) {
  
  var data = geojson.features;
  var coordinates = [];    //좌표 저장할 배열
@@ -40,31 +54,10 @@
      coordinates = val.geometry.coordinates;
      name = val.properties.CTP_KOR_NM;
      
-     //displayArea(coordinates, name);
-     var areas = [
-        name : name,
-        path : [
-          new kakao.maps.LatLng(coordinates[1], coordinates[0]);
-        ]
-    ];
+     displayArea(coordinates, name);
+
  })
 })
-
-// 지도에 폴리곤으로 표시할 영역데이터 배열입니다 
-
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(36.189320, 128.003166), // 지도의 중심좌표
-        level: 12 // 지도의 확대 레벨
-    };
-for (var i = 0, len = areas.length; i < len; i++) {
-    displayArea(areas[i]);
-}
-var map = new kakao.maps.Map(mapContainer, mapOption),
-    customOverlay = new kakao.maps.CustomOverlay({}),
-    infowindow = new kakao.maps.InfoWindow({removable: true});
-
-// 지도에 영역데이터를 폴리곤으로 표시합니다 
 
 
 var polygons=[];                //function 안 쪽에 지역변수로 넣으니깐 폴리곤 하나 생성할 때마다 배열이 비어서 클릭했을 때 전체를 못 없애줌.  그래서 전역변수로 만듦.
