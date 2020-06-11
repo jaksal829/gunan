@@ -24,7 +24,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption),
     infowindow = new kakao.maps.InfoWindow({removable: true});
 
 // 지도에 영역데이터를 폴리곤으로 표시합니다 
-$.getJSON("1234.geojson", function(geojson) {
+$.getJSON("https://github.com/jaksal829/gunan/blob/master/1234.geojson", function(geojson) {
  
     var data = geojson.features;
     var coordinates = [];    //좌표 저장할 배열
