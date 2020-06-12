@@ -8063,10 +8063,9 @@ function displayArea(area) {
          default : map.setLevel(level, {anchor: new kakao.maps.LatLng(33.350213, 126.501045)}, {animate: true});
       }
       
-        
+        polygon.setMap(null);
     });
-    if(getLevel() == 11) polygon.setMap(null);
-    //else if(level == 9) polygon.setMap(null);;
+    
 }
 //map.setDraggable(false);
 map.setZoomable(false);
