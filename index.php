@@ -8065,8 +8065,8 @@ function displayArea(area) {
       
         
     });
-    if(level == 11) polygon.setMap(null);
-    else if(level == 9) polygon.setMap(null);;
+    if(getLevel() == 11) polygon.setMap(null);
+    //else if(level == 9) polygon.setMap(null);;
 }
 //map.setDraggable(false);
 map.setZoomable(false);
