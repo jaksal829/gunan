@@ -8086,7 +8086,12 @@ function hideMarkers() {
 }
 function showMarkers() {
     setMarkers(map);
-    var map = new kakao.maps.Map(mapContainer, mapOption);
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(36.189320, 128.003166), // 지도의 중심좌표
+        level: 13 // 지도의 확대 레벨
+        
+    };
     for (var a = 0; a < areas.length; a++) {
       displayArea(areas[a]);
     }
