@@ -8018,14 +8018,10 @@ function displayArea(area) {
     }); 
 
     // 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다 
-    kakao.maps.event.addListener(polygon, 'click', function(mouseEvent) {
+    kakao.maps.event.addListener(polygon, 'click', function() {
       var level = map.getLevel()-2;
       
-      
-      infowindow.setContent(content); 
-      infowindow.setPosition(mouseEvent.latLng); 
-      infowindow.setMap(map);
-      map.setLevel(level, {anchor: new kakao.maps.LatLng(37.555220, 126.987482)}, {animate: true});
+      map.setLevel(11, {anchor: new kakao.maps.LatLng(37.555220, 126.987482)}, {animate: true});
       polygon.setMap(null);
     });
 }
