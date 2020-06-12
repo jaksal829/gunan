@@ -8066,13 +8066,14 @@ function displayArea(area) {
       }
       deletePolygon(polygons);
     });
-}
-function deletePolygon(polygons) {
-    for (var i = 0; i < polygons.length; i++) {
-        polygons[i].setMap(null);
+    function deletePolygon(polygons) {
+      for (var i = 0; i < polygons.length; i++) {
+          polygons[i].setMap(null);
+      }
+      polygons = [];
     }
-    polygons = [];
 }
+
 //map.setDraggable(false);
 map.setZoomable(false);
 </script>
