@@ -111,6 +111,10 @@
 <div id="udiv" class="udiv">
   <ul class="cmap">
       <div id="map" class="container"></div>
+      <p>
+        <button onclick="hideMarkers()">감추기</button>
+        <button onclick="showMarkers()">보이기</button>
+    </p> 
   </ul>
   <ul class="cmap">
       <iframe longdesc="covid simulation" width="1024" height="668" frameborder="0" scrolling="no" name="NeBoard" onLoad="ResizeFrame('NeBoard');" id="img" src="https://unity-technologies.github.io/unitysimulation-coronavirus-example-player/"></iframe>
@@ -7978,6 +7982,10 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 var map = new kakao.maps.Map(mapContainer, mapOption),
     customOverlay = new kakao.maps.CustomOverlay({}),
     infowindow = new kakao.maps.InfoWindow({removable: true});
+
+var markers = [];
+//map.setDraggable(false);
+map.setZoomable(false);
 // 지도에 영역데이터를 폴리곤으로 표시합니다 
 for (var a = 0; a < areas.length; a++) {
     displayArea(areas[a]);
@@ -7985,7 +7993,7 @@ for (var a = 0; a < areas.length; a++) {
 
 // 다각형을 생상하고 이벤트를 등록하는 함수입니다
 function displayArea(area) {
-  
+    
     // 다각형을 생성합니다 
     var polygon = new kakao.maps.Polygon({
         map: map, // 다각형을 표시할 지도 객체
@@ -7996,7 +8004,7 @@ function displayArea(area) {
         fillColor: '#fff',
         fillOpacity: 0.7 
     });
-
+    markers.push(polygon);
      
     // 다각형에 mouseover 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 변경합니다 
     // 지역명을 표시하는 커스텀오버레이를 지도위에 표시합니다
@@ -8065,15 +8073,22 @@ function displayArea(area) {
          break;
          default : map.setLevel(level, {anchor: new kakao.maps.LatLng(33.350213, 126.501045)}, {animate: true});
       }
-      for (var i = 0; i < areas.length; i++) {
-    areas[i].setMap(null);
-}        
+      polygon.setMap(null);
+      
     });
     
 }
-
-//map.setDraggable(false);
-map.setZoomable(false);
+function setMarkers(map) {
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(map);
+    }            
+}
+function hideMarkers() {
+    setMarkers(null);    
+}
+function showMarkers() {
+    setMarkers(map)    
+}
 </script>
 </body>
 </html>
