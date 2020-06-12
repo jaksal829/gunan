@@ -7979,7 +7979,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption),
 for (var i = 0, len = areas.length; i < len; i++) {
     displayArea(areas[i]);
 }
-
+var polygons=[]; 
 // 다각형을 생상하고 이벤트를 등록하는 함수입니다
 function displayArea(area) {
 
@@ -7993,6 +7993,7 @@ function displayArea(area) {
         fillColor: '#fff',
         fillOpacity: 0.7 
     });
+    polygons.push(polygon); 
     // 다각형에 mouseover 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 변경합니다 
     // 지역명을 표시하는 커스텀오버레이를 지도위에 표시합니다
     kakao.maps.event.addListener(polygon, 'mouseover', function(mouseEvent) {
@@ -8021,8 +8022,14 @@ function displayArea(area) {
     kakao.maps.event.addListener(polygon, 'click', function() {
       var level = map.getLevel()-2;
       
-      map.setLevel(11, {anchor: new kakao.maps.LatLng(37.555220, 126.987482)}, {animate: true});
+      // infowindow.setContent(content); 
+      // infowindow.setPosition(mouseEvent.latLng); 
+      // infowindow.setMap(map);
+      if(area.name == "서울특별시"){
+        map.setLevel(level, {anchor: new kakao.maps.LatLng(37.555220, 126.987482)}, {animate: true});
+      }
       polygon.setMap(null);
+      deletePolygon(polygons); 
     });
 }
 //map.setDraggable(false);
