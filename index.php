@@ -7975,7 +7975,7 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 var map = new kakao.maps.Map(mapContainer, mapOption),
     customOverlay = new kakao.maps.CustomOverlay({}),
     infowindow = new kakao.maps.InfoWindow({removable: true});
-
+var polygons=[]; 
 // 지도에 영역데이터를 폴리곤으로 표시합니다 
 for (var i = 0, len = areas.length; i < len; i++) {
     displayArea(areas[i]);
@@ -7994,7 +7994,7 @@ function displayArea(area) {
         fillColor: '#fff',
         fillOpacity: 0.7 
     });
-
+    polygons.push(polygon);
     // 다각형에 mouseover 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 변경합니다 
     // 지역명을 표시하는 커스텀오버레이를 지도위에 표시합니다
     kakao.maps.event.addListener(polygon, 'mouseover', function(mouseEvent) {
@@ -8021,15 +8021,16 @@ function displayArea(area) {
 
     // 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다 
     kakao.maps.event.addListener(polygon, 'click', function(mouseEvent) {
+      var level = map.getLevel()-2;
       var content = '<div class="info">' + 
                     '   <div class="title">' + area.name + '</div>' +
                     '   <div class="size">총 면적 : 약 ' + Math.floor(polygon.getArea()) + ' m<sup>2</sup></area>' +
                     '</div>';
 
-        infowindow.setContent(content); 
-        infowindow.setPosition(mouseEvent.latLng); 
-        infowindow.setMap(map);
-
+      infowindow.setContent(content); 
+      infowindow.setPosition(mouseEvent.latLng); 
+      infowindow.setMap(map);
+      deletePolygon(polygons); 
     });
 }
 map.setDraggable(false);
