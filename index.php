@@ -7965,6 +7965,8 @@
           new kakao.maps.LatLng(38.24156895,127.1105458)        ]
     }
 ];
+</script>
+<script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
         center: new kakao.maps.LatLng(36.189320, 128.003166), // 지도의 중심좌표
@@ -8025,11 +8027,11 @@ function displayArea(area) {
       // infowindow.setContent(content); 
       // infowindow.setPosition(mouseEvent.latLng); 
       // infowindow.setMap(map);
-      if(area.name == "서울특별시"){
+      //if(area.name == "서울특별시"){
         map.setLevel(level, {anchor: new kakao.maps.LatLng(37.555220, 126.987482)}, {animate: true});
-      }
+      //}
       polygon.setMap(null);
-      //deletePolygon(polygons); 
+      deletePolygon(polygons); 
     });
 }
 map.setDraggable(false);
