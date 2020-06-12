@@ -7983,10 +7983,10 @@ for (var a = 0; a < areas.length; a++) {
     displayArea(areas[a]);
 }
 
-var po=[];
+
 // 다각형을 생상하고 이벤트를 등록하는 함수입니다
 function displayArea(area) {
-    
+  var po=[];
     // 다각형을 생성합니다 
     var polygon = new kakao.maps.Polygon({
         map: map, // 다각형을 표시할 지도 객체
