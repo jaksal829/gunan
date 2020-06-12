@@ -8029,7 +8029,7 @@ function displayArea(area) {
         map.setLevel(level, {anchor: new kakao.maps.LatLng(37.555220, 126.987482)}, {animate: true});
       }
       polygon.setMap(null);
-      deletePolygon(polygons); 
+      //deletePolygon(polygons); 
     });
 }
 map.setDraggable(false);
