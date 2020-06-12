@@ -8087,6 +8087,9 @@ function hideMarkers() {
 function showMarkers() {
     setMarkers(map);
     var map = new kakao.maps.Map(mapContainer, mapOption);
+    for (var a = 0; a < areas.length; a++) {
+      displayArea(areas[a]);
+    }
 }
 </script>
 </body>
