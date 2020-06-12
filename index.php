@@ -8059,7 +8059,7 @@ function displayArea(area) {
          break;
          case "대구광역시" : map.setLevel(level2, {anchor: new kakao.maps.LatLng(35.829919, 128.565523)}, {animate: true});
          break;
-         default : map.setLevel(level2, {anchor: new kakao.maps.LatLng(33.387773, 126.575744)}, {animate: true});
+         default : map.setLevel(level, {anchor: new kakao.maps.LatLng(33.350213, 126.501045)}, {animate: true});
       }
       // if(area.name == "서울특별시"){
       //   map.setLevel(level, {anchor: new kakao.maps.LatLng(37.555220, 126.987482)}, {animate: true});
