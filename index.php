@@ -8023,9 +8023,7 @@ function displayArea(area) {
     kakao.maps.event.addListener(polygon, 'click', function(mouseEvent) {
       var level = map.getLevel()-2;
       var content = '<div class="info">' + '   <div class="title">' + area.name + '</div>' + '   <div class="size">총 면적 : 약 ' + Math.floor(polygon.getArea()) + ' m<sup>2</sup></area>' + '</div>';
-      map.setLevel(level, {anchor: centroid(mouseEvent.latLng), animate: {
-             duration: 350            //확대 애니메이션 시간
-         }});
+      map.setLevel(level, {anchor: centroid(mouseEvent.latLng));
       infowindow.setContent(content); 
       infowindow.setPosition(mouseEvent.latLng); 
       infowindow.setMap(map);
