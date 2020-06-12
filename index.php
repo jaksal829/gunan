@@ -116,19 +116,23 @@
 <!-- 지도를 표시할 div 입니다 -->
 <div id="udiv" class="udiv">
   <ul class="cmap">
+    <p> 코로나 카카오 맵 API </p>
       <div id="map" class="container"></div>
       <p>
         <button onclick="showMarkers()">원점</button>
     </p> 
   </ul>
   <ul class="cmap">
+  <p> 사회적 거리두기 시뮬레이션 </p>
       <iframe longdesc="covid simulation" width="1024" height="668" frameborder="0" scrolling="no" name="NeBoard" onLoad="ResizeFrame('NeBoard');" id="img" src="https://unity-technologies.github.io/unitysimulation-coronavirus-example-player/"></iframe>
   </ul>
   <ul>
+  <p> 세계적 코로나 확진자 증가 그래프 </p>
     <div class="flourish-embed flourish-bar-chart-race" data-src="visualisation/2675613" data-url="https://flo.uri.sh/visualisation/2675613/embed"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
   </ul>
 </div>
 <div class="container2">
+  <p> 코로나 최신 현황 </p>
   <table><?php
     foreach($data->find("table") as $ul){
         foreach($ul->find("tr") as $li){ ?>
