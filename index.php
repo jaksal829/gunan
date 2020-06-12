@@ -107,11 +107,10 @@
     include "simple_html_dom.php";
     //include "korea.geojson";
     $data = file_get_html("http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=13&ncvContSeq=&contSeq=&board_id=&gubun=");
-    $info = $data->find("p.info");
   ?>
     <ul id="nav-ul"class="nav-container">
-      <li class="nav-item"><a style="text_align:left">코로나 맵</a></li>
-      <li class="nav-item"><a style="text_align:right"><?php echo $info; ?> 기준</a></li>
+      <li class="nav-item"><a>코로나 맵</a></li>
+      <li class="nav-item"><a><?php foreach($data->find("p.info") as $info) echo $info; ?> 기준</a></li>
     </ul>
   </nav>
 <!-- 지도를 표시할 div 입니다 -->
