@@ -111,7 +111,7 @@
   ?>
     <ul id="nav-ul"class="nav-container">
       <li class="nav-item"><a style="text_align:left">코로나 맵</a></li>
-      <li class="nav-item"><a style="text_align:right"><?php $info ?> 기준</a></li>
+      <li class="nav-item"><a style="text_align:right"><?php echo $info; ?> 기준</a></li>
     </ul>
   </nav>
 <!-- 지도를 표시할 div 입니다 -->
