@@ -110,7 +110,7 @@
   ?>
     <ul id="nav-ul"class="nav-container">
       <li class="nav-item"><a>코로나 맵</a></li>
-      <li class="nav-item"><a><?php foreach($data->find("p.info") as $info) echo $info; ?></a></li>
+      <li class="nav-item"><a><?php foreach($data->find("p.info") as $info) echo $info->plaintext; ?></a></li>
     </ul>
   </nav>
 <!-- 지도를 표시할 div 입니다 -->
