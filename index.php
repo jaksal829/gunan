@@ -8032,7 +8032,7 @@ function displayArea(area) {
       deletePolygon(polygons); 
     });
 }
-//map.setDraggable(false);
+map.setDraggable(false);
 //map.setZoomable(false);
 </script>
 </body>
