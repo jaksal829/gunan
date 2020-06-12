@@ -8073,10 +8073,6 @@ function displayArea(area) {
          break;
          default : map.setLevel(level, {anchor: new kakao.maps.LatLng(33.350213, 126.501045)}, {animate: true});
       }
-      for (var a = 0; a < areas.length; a++) {
-    displayArea(null);
-};
-      
     });
     
 }
