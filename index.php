@@ -8027,9 +8027,9 @@ function displayArea(area) {
       var level = map.getLevel()-2;
       var level2 = map.getLevel()-4;
       
-      infowindow.setContent(content); 
-      infowindow.setPosition(mouseEvent.latLng); 
-      infowindow.setMap(map);
+      // infowindow.setContent(content); 
+      // infowindow.setPosition(mouseEvent.latLng); 
+      // infowindow.setMap(map);
       switch(area.name){
          case "서울특별시" : map.setLevel(level2, {anchor: new kakao.maps.LatLng(37.555220, 126.987482)}, {animate: true});
          break;
