@@ -112,8 +112,7 @@
   <ul class="cmap">
       <div id="map" class="container"></div>
       <p>
-        <button onclick="hideMarkers()">감추기</button>
-        <button onclick="showMarkers()">보이기</button>
+        <button onclick="showMarkers()">원점</button>
     </p> 
   </ul>
   <ul class="cmap">
@@ -8081,20 +8080,14 @@ function setMarkers(map) {
         markers[i].setMap(map);
     }            
 }
-function hideMarkers() {
-    setMarkers(null);    
-}
 function showMarkers() {
-    setMarkers(map);
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
         center: new kakao.maps.LatLng(36.189320, 128.003166), // 지도의 중심좌표
         level: 13 // 지도의 확대 레벨
         
     };
-    for (var a = 0; a < areas.length; a++) {
-      displayArea(areas[a]);
-    }
+    setMarkers(map);
 }
 </script>
 </body>
