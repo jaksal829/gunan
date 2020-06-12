@@ -7980,8 +7980,7 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     };
 // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 var map = new kakao.maps.Map(mapContainer, mapOption),
-    customOverlay = new kakao.maps.CustomOverlay({}),
-    infowindow = new kakao.maps.InfoWindow({removable: true});
+    customOverlay = new kakao.maps.CustomOverlay({});
 
 var markers = [];
 //map.setDraggable(false);
@@ -8073,6 +8072,7 @@ function displayArea(area) {
          break;
          default : map.setLevel(level, {anchor: new kakao.maps.LatLng(33.350213, 126.501045)}, {animate: true});
       }
+      setMarkers(null)
     });
     
 }
