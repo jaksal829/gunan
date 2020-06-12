@@ -25,7 +25,7 @@
       }
       .container {
         float: left;
-        width: 670px;
+        width: 870px;
         height: 852px;
       }
       .container2 {
