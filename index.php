@@ -8064,18 +8064,13 @@ function displayArea(area) {
          break;
          default : map.setLevel(level, {anchor: new kakao.maps.LatLng(33.350213, 126.501045)}, {animate: true});
       }
-      // if(area.name == "서울특별시"){
-      //   map.setLevel(level, {anchor: new kakao.maps.LatLng(37.555220, 126.987482)}, {animate: true});
-      // }
-      // else if(area.name == "인천광역시"){
-      //   map.setLevel(level, {anchor: new kakao.maps.LatLng(37.503944, 126.704319)}, {animate: true});
-      // }
-      for(var i=0;i<=polygons.length;i++)
+      for(var i=0;i<=polygons.length;i++){
         polygon.setMap(null);
+      }
     });
 }
 map.setDraggable(false);
-//map.setZoomable(false);
+map.setZoomable(false);
 </script>
 </body>
 </html>
