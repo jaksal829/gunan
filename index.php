@@ -8091,7 +8091,7 @@ function centroid (points) {
           y += (p1.y + p2.y) * f;
           area += f * 3;
   }
-  return new daum.maps.LatLng(x / area, y / area);
+  return new kakao.maps.LatLng(x / area, y / area);
 }
 //map.setDraggable(false);
 map.setZoomable(false);
