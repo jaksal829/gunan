@@ -7985,7 +7985,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption),
 
 var markers = [];
 //map.setDraggable(false);
-map.setZoomable(false);
+//map.setZoomable(false);
 // 지도에 영역데이터를 폴리곤으로 표시합니다 
 for (var a = 0; a < areas.length; a++) {
     displayArea(areas[a]);
