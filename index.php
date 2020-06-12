@@ -104,7 +104,7 @@
 <body>
     <ul id="nav-ul"class="nav-container">
       <li class="nav-item"><a style="text_align:left">코로나 맵</a></li>
-      <li class="nav-item"><a style="text_align:right">기준</a></li>
+      <li class="nav-item"><a style="text_align:right"><?php $info ?> 기준</a></li>
     </ul>
   </nav>
 <!-- 지도를 표시할 div 입니다 -->
@@ -129,6 +129,7 @@
     //include "korea.geojson";
     $data = file_get_html("http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=13&ncvContSeq=&contSeq=&board_id=&gubun=");
     ?><table><?php
+    $info = $data->find("p.info")
     foreach($data->find("table") as $ul){
         foreach($ul->find("tr") as $li){ ?>
             <tr>
