@@ -8026,7 +8026,7 @@ function displayArea(area) {
                     '   <div class="title">' + area.name + '</div>' +
                     '   <div class="size">총 면적 : 약 ' + Math.floor(polygon.getArea()) + ' m<sup>2</sup></area>' +
                     '</div>';
-
+      map.setLevel(level);
       infowindow.setContent(content); 
       infowindow.setPosition(mouseEvent.latLng); 
       infowindow.setMap(map);
