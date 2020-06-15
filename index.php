@@ -12,7 +12,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
 
     $row = 1;
     $handle = fopen("latlng.csv", "r+");
-    $sql = "INSERT INTO latlng VALUES ('".$data[0]."','".$data[1]."')";
+    $sql = "INSERT INTO latlng VALUES ('".$data[0]."','".$data[1]."');";
     // while (($data = fgetcsv($handle, 1000, ",")) !== false) {
     //     $num = count($data);
 
