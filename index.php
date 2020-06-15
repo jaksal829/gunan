@@ -112,14 +112,14 @@
     $conn = sqlsrv_connect($serverName, $connectionInfo);
 
     $row = 1;
-    $handle = fopen("busan.csv", "r");
+    $handle = fopen("latlng.csv", "r+");
     while (($data = fgetcsv($handle, 1000, ",")) !== false) {
         $num = count($data);
         //echo "<p> $num fields in line $row: <br /></p>\n";
         $row++;
 
         $sql = false;
-        $sql = "INSERT INTO busan_bo VALUES (";
+        $sql = "INSERT INTO latlng VALUES (";
 
         for ($c=0; $c < $num; $c++) {
             $sql .= "'" . $data[$c] . "'";
@@ -129,12 +129,11 @@
         }
         $sql .= ");";
         $getResults=sqlsrv_query($conn,$sql);
-        $row2 = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC);
         echo "$sql<br />";
     }
     fclose($handle);
-    sqlsrv_free_stmt( $stmt);
-    sqlsrv_close( $conn);  
+    sqlsrv_free_stmt($stmt);
+    sqlsrv_close($conn);  
 
     ini_set("allow_url_fopen",1);
     include "simple_html_dom.php";
