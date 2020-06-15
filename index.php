@@ -33,11 +33,12 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
     fclose($handle);
     $junggu = "SELECT lat, lng FROM busan WHERE name='junggu'";
     $getResults1 = sqlsrv_query($conn,$junggu);
-    while ($row = sqlsrv_fetch_array($getResults1,SQLSRV_FETCH_ASSOC)){
-      echo $row('lat')
+    while ($row = sqlsrv_fetch_array($getResults1, SQLSRV_FETCH_ASSOC)){
+      echo $row('lat');
       echo "<br>";
       echo $row('lng');
     }
+
     sqlsrv_free_stst($stst);
     sqlsrv_close($conn);
 ?>
