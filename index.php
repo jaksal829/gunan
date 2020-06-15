@@ -12,27 +12,27 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
 
     $row = 1;
     $handle = fopen("latlng.csv", "r+");
-    while (($data = fgetcsv($handle, 1000, ",")) !== false) {
-        $num = count($data);
-        //echo "<p> $num fields in line $row: <br /></p>\n";
-        $row++;
+    $sql = "INSERT INTO latlng VALUES ('".$data[0]."','".$data[1]."')";
+    // while (($data = fgetcsv($handle, 1000, ",")) !== false) {
+    //     $num = count($data);
 
-        $sql = false;
-        $sql = "INSERT INTO latlng VALUES (";
+    //     $row++;
 
-        for ($c=0; $c < $num; $c++) {
-            $sql .= "'" . $data[$c] . "'";
-            if($c+1 !== $num){
-                $sql .= ", ";
-            }
-        }
-        $sql .= ");";
-        $getResults=sqlsrv_query($conn,$sql);
-        echo "$sql<br />";
-    }
+    //     $sql = "INSERT INTO latlng VALUES (";
+
+    //     for ($c=0; $c < $num; $c++) {
+    //         $sql .= "'" . $data[$c] . "'";
+    //         if($c+1 !== $num){
+    //             $sql .= ", ";
+    //         }
+    //     }
+    //     $sql .= ");";
+        
+    //     echo "$sql<br />";
+    // }
+    $getResults = sqlsrv_query($conn,$sql);
     fclose($handle);
-    sqlsrv_free_stmt($stmt);
-    sqlsrv_close($conn);  
+    sqlsrv_close($conn);
 ?>
 <!DOCTYPE html>
 <html>
