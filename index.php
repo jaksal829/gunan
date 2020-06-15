@@ -31,10 +31,6 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
         //echo "$sql<br />";
     }
     fclose($handle);
-
-    $lat = array("SELECT lat FROM busan");
-    $lng = array("SELECT lng FROM busan");
-    
     
     sqlsrv_close($conn);
 ?>
