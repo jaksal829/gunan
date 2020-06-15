@@ -28,13 +28,17 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
         }
         $sql .= ");";
         $getResults = sqlsrv_query($conn,$sql);
-        echo "$sql<br />";
+        //echo "$sql<br />";
     }
+    fclose($handle);
     
     $lat = array("SELECT lat FROM busan");
     $lng = array("SELECT lng FROM busan");
-    echo $lat.", ".$lng;
-    fclose($handle);
+    foreach($lat as $la){
+      echo $la;
+    }
+    
+    
     sqlsrv_close($conn);
 ?>
 <!DOCTYPE html>
