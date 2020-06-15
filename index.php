@@ -103,6 +103,32 @@
 </head>
 <body>
   <?php
+    $connectionInfo = array("UID" => "gunan", "pwd" => "app2020!", "Database" => "covid", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
+    $serverName = "tcp:gunan.database.windows.net,1433";
+    $conn = sqlsrv_connect($serverName, $connectionInfo);
+
+    $row = 1;
+    $handle = fopen("busan.csv", "r");
+    while (($data = fgetcsv($handle, 1000, ",")) !== false) {
+        $num = count($data);
+        echo "<p> $num fields in line $row: <br /></p>\n";
+        $row++;
+
+        $sql = false;
+        $sql = "INSERT INTO busan_bo VALUES (";
+
+        for ($c=0; $c < $num; $c++) {
+            $sql .= "'" . $data[$c] . "'";
+            if($c+1 !== $num){
+                $sql .= ", ";
+            }
+        }
+        $sql .= ");";
+
+        echo "$sql<br />";
+    }
+    fclose($handle);
+
     ini_set("allow_url_fopen",1);
     include "simple_html_dom.php";
     //include "korea.geojson";
