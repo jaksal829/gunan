@@ -110,6 +110,13 @@
     $connectionInfo = array("UID" => "gunan", "pwd" => "app2020!", "Database" => "covid", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
     $serverName = "tcp:gunan.database.windows.net,1433";
     $conn = sqlsrv_connect($serverName, $connectionInfo);
+    
+    if (!$conn) {
+        echo "conn: false";
+    }
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
     $row = 1;
     $handle = fopen("latlng.csv", "r+");
