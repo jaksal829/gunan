@@ -35,7 +35,6 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
     $getResults1 = sqlsrv_query($conn,$junggu);
     while ($row = sqlsrv_fetch_array($getResults1, SQLSRV_FETCH_ASSOC)){
       echo $row('lat');
-      echo "<br>";
       echo $row('lng');
     }
 
