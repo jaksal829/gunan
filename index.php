@@ -11,14 +11,14 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
     }
 
     $row = 1;
-    $handle = fopen("latlng.csv", "r+");
+    $handle = fopen("busan.csv", "r+");
     //$sql = "INSERT INTO latlng VALUES ('".$data[0]."','".$data[1]."');";
     while (($data = fgetcsv($handle, 1000, ",")) !== false) {
         $num = count($data);
 
         $row++;
 
-        $sql = "INSERT INTO busanLL VALUES (";
+        $sql = "INSERT INTO busan VALUES (";
 
         for ($c=0; $c < $num; $c++) {
             $sql .= "'" . $data[$c] . "'";
