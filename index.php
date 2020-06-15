@@ -60,6 +60,10 @@
       background-color: darkslategray;
       list-style-type: none;
     }
+    .nav-ul{
+      align : center;
+      margin : 15px;
+    }
     .nav-item{
       padding: 15px;
       cursor: pointer;
@@ -124,10 +128,13 @@
             }
         }
         $sql .= ");";
-
+        $getResults=sqlsrv_query($conn,$sql);
+        $row2 = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC);
         echo "$sql<br />";
     }
     fclose($handle);
+    sqlsrv_free_stmt( $stmt);
+    sqlsrv_close( $conn);  
 
     ini_set("allow_url_fopen",1);
     include "simple_html_dom.php";
