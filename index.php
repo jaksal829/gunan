@@ -31,7 +31,8 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
         //echo "$sql<br />";
     }
     fclose($handle);
-    
+    $junggu = "SELECT lat, lng FROM busan WHERE name='junggu'";
+    echo $junggu;
     sqlsrv_close($conn);
 ?>
 <!DOCTYPE html>
