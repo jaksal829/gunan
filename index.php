@@ -115,7 +115,7 @@
     $handle = fopen("busan.csv", "r");
     while (($data = fgetcsv($handle, 1000, ",")) !== false) {
         $num = count($data);
-        echo "<p> $num fields in line $row: <br /></p>\n";
+        //echo "<p> $num fields in line $row: <br /></p>\n";
         $row++;
 
         $sql = false;
