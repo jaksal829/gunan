@@ -39,7 +39,6 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
     }
     echo $x;
     echo $y;
-    sqlsrv_free_stst($stst);
     sqlsrv_close($conn);
 ?>
 <!DOCTYPE html>
