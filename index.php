@@ -8116,7 +8116,8 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     };
 // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 var map = new kakao.maps.Map(mapContainer, mapOption),
-    customOverlay = new kakao.maps.CustomOverlay({});
+    customOverlay = new kakao.maps.CustomOverlay({}),
+    infowindow = new kakao.maps.InfoWindow({removable: true});
 
 var markers = [];
 //map.setDraggable(false);
@@ -8215,21 +8216,19 @@ function displayArea(area) {
             title : markerPosition[i].title,
             position: markerPosition[i].latlng // 마커를 표시할 위치
         });
-        var infowindow = new kakao.maps.InfoWindow({
-          content : markerPosition[i].content,
-          removable : true // x 표시
+        
+        kakao.maps.event.addListener(marker, 'click', function(mouseEvent){
+          var content = '<div class="info">' + 
+                    '   <div class="title">' + area.name + '</div>' +
+                    '   <div class="size">총 면적 : 약 ' + Math.floor(polygon.getArea()) + ' m<sup>2</sup></area>' +
+                    '</div>';
+
+          infowindow.setContent(content); 
+          infowindow.setPosition(mouseEvent.latLng); 
+          infowindow.setMap(map);
         });
-        kakao.maps.event.addListener(marker, 'click', makeClick(map,marker,infowindow));
       }
     });
-}
-function makeClick(map, marker, infowindow) {
-  return function() {
-    infowindow.open(map,marker);
-  };
-    // infowindow.setContent(content); 
-    // infowindow.setPosition(mouseEvent.latLng); 
-    // infowindow.setMap(map);
 }
 function setMarkers(map) {
   for (var i = 0; i < markers.length; i++) {
