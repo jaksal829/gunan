@@ -8223,49 +8223,51 @@ function displayArea(area) {
             position: markerPosition[i].latlng // 마커를 표시할 위치
         });
       }
-      kakao.maps.event.addListener(marker, 'click', function(){
-        if (status === kakao.maps.services.Status.OK) {
-            var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
-            detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
-            
-            var content = '<div class="bAddr">' +
-                            '<span class="title">법정동 주소정보</span>' + 
-                            detailAddr + 
-                        '</div>';
-
-            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
-            infowindow.setContent(content);
-            infowindow.open(map, marker);
-        }
-      });
-      kakao.maps.event.addListener(map, 'idle', function() {
-          searchAddrFromCoords(map.getCenter(), displayCenterInfo);
-      });
     });
+    kakao.maps.event.addListener(marker, 'click', makeClick(map,marker,infowindow));
 }
+// function makeClick(map, marker, infowindow) {
+//     return function() {
+//         infowindow.open(map,marker);
+//         if (status === kakao.maps.services.Status.OK) {
+//             var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+//             detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+            
+//             var content = '<div class="bAddr">' +
+//                             '<span class="title">법정동 주소정보</span>' + 
+//                             detailAddr + 
+//                         '</div>';
 
-function searchAddrFromCoords(coords, callback) {
-    // 좌표로 행정동 주소 정보를 요청합니다
-    geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);         
-}
-function searchDetailAddrFromCoords(coords, callback) {
-    // 좌표로 법정동 상세 주소 정보를 요청합니다
-    geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
-}
+//             // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+//             infowindow.setContent(content);
+//             infowindow.open(map, marker);
+//         }
+//     };
+// }
+// kakao.maps.event.addListener(map, 'idle', function() {
+//     searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+// });
+// function searchAddrFromCoords(coords, callback) {
+//     // 좌표로 행정동 주소 정보를 요청합니다
+//     geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);         
+// }
+// function searchDetailAddrFromCoords(coords, callback) {
+//     // 좌표로 법정동 상세 주소 정보를 요청합니다
+//     geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+// }
+// function displayCenterInfo(result, status) {
+//     if (status === kakao.maps.services.Status.OK) {
+//         var infoDiv = document.getElementById('centerAddr');
 
-function displayCenterInfo(result, status) {
-    if (status === kakao.maps.services.Status.OK) {
-        var infoDiv = document.getElementById('centerAddr');
-
-        for(var i = 0; i < result.length; i++) {
-            // 행정동의 region_type 값은 'H' 이므로
-            if (result[i].region_type === 'H') {
-                infoDiv.innerHTML = result[i].address_name;
-                break;
-            }
-        }
-    }    
-}
+//         for(var i = 0; i < result.length; i++) {
+//             // 행정동의 region_type 값은 'H' 이므로
+//             if (result[i].region_type === 'H') {
+//                 infoDiv.innerHTML = result[i].address_name;
+//                 break;
+//             }
+//         }
+//     }    
+// }
 function setMarkers(map) {
   for (var i = 0; i < markers.length; i++) {
     markers[i].setMap(map);
