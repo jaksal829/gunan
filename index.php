@@ -192,7 +192,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
     <p> 코로나 카카오 맵 API </p>
       <div id="map" class="container"></div>
       <p>
-        <button onclick="showMarkers()">원점</button>
+        <button onclick="showpolygons()">원점</button>
     </p> 
   </ul>
   <ul class="cmap">
@@ -8123,9 +8123,10 @@ var map = new kakao.maps.Map(mapContainer, mapOption),
     infowindow = new kakao.maps.InfoWindow({removable: true});
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
-var markers = [];
+
+var polygons = [];
 // 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
-searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+//searchAddrFromCoords(map.getCenter(), displayCenterInfo);
 //map.setDraggable(false);
 //map.setZoomable(false);
 // 지도에 영역데이터를 폴리곤으로 표시합니다 
@@ -8146,7 +8147,7 @@ function displayArea(area) {
         fillColor: '#fff',
         fillOpacity: 0.7 
     });
-    markers.push(polygon);
+    polygons.push(polygon);
      
     // 다각형에 mouseover 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 변경합니다 
     // 지역명을 표시하는 커스텀오버레이를 지도위에 표시합니다
@@ -8215,7 +8216,7 @@ function displayArea(area) {
          break;
          default : map.setLevel(level, {anchor: new kakao.maps.LatLng(33.350213, 126.501045)}, {animate: true});
       }
-      setMarkers(null);
+      setpolygons(null);
       for (var i = 0; i < markerPosition.length; i ++) {
         var marker = new kakao.maps.Marker({
             map: map, // 마커를 표시할 지도
@@ -8225,13 +8226,12 @@ function displayArea(area) {
         kakao.maps.event.addListener(marker, 'click', makeClick(map,marker,infowindow));
       }
     });
-    
 }
 function makeClick(map, marker, infowindow) {
-                return function() {
-                    infowindow.open(map,marker);
-                };
-            }
+  return function() {
+      infowindow.open(map,marker);
+  };
+}
 // function makeClick(map, marker, infowindow) {
 //     return function() {
 //         infowindow.open(map,marker);
@@ -8274,15 +8274,15 @@ function makeClick(map, marker, infowindow) {
 //         }
 //     }    
 // }
-function setMarkers(map) {
-  for (var i = 0; i < markers.length; i++) {
-    markers[i].setMap(map);
+function setpolygons(map) {
+  for (var i = 0; i < polygons.length; i++) {
+    polygons[i].setMap(map);
   }            
 }
-function showMarkers() {
+function showpolygons() {
   map.setCenter(new kakao.maps.LatLng(36.189320, 128.003166));
   map.setLevel(13);
-  setMarkers(map);
+  setpolygons(map);
 }
 </script>
 </body>
