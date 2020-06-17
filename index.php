@@ -8223,8 +8223,7 @@ function displayArea(area) {
             position: markerPosition[i].latlng // 마커를 표시할 위치
         });
       }
-    });
-    kakao.maps.event.addListener(marker, 'click', function(){
+      kakao.maps.event.addListener(marker, 'click', function(){
         if (status === kakao.maps.services.Status.OK) {
             var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
             detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
@@ -8238,11 +8237,13 @@ function displayArea(area) {
             infowindow.setContent(content);
             infowindow.open(map, marker);
         }
-    });
-    kakao.maps.event.addListener(map, 'idle', function() {
-        searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+      });
+      kakao.maps.event.addListener(map, 'idle', function() {
+          searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+      });
     });
 }
+
 function searchAddrFromCoords(coords, callback) {
     // 좌표로 행정동 주소 정보를 요청합니다
     geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);         
@@ -8251,6 +8252,7 @@ function searchDetailAddrFromCoords(coords, callback) {
     // 좌표로 법정동 상세 주소 정보를 요청합니다
     geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
 }
+
 function displayCenterInfo(result, status) {
     if (status === kakao.maps.services.Status.OK) {
         var infoDiv = document.getElementById('centerAddr');
