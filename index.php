@@ -175,7 +175,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
   </ul>
   <ul>
   <p> 세계적 코로나 확진자 증가 그래프 </p>
-  <div class="flourish-embed flourish-bar-chart-race" data-src="visualisation/2675613" data-url="https://flo.uri.sh/visualisation/2675613/embed"><script src="https://public.flourish.studio/resources/embed.js"></script></div></script></div>
+  <div class="flourish-embed flourish-bar-chart-race" data-src="visualisation/2872002" data-url="https://flo.uri.sh/visualisation/2872002/embed"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
   </ul>
 </div>
 <div class="container2">
