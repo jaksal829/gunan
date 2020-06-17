@@ -8224,8 +8224,9 @@ function displayArea(area) {
         });
       }
     });
+    kakao.maps.event.addListener(marker, 'click', makeClick(map,marker,infowindow));
 }
-kakao.maps.event.addListener(marker, 'click', makeClick(map,marker,infowindow));
+
 function makeClick(map, marker, infowindow) {
     return function() {
         infowindow.open(map,marker);
