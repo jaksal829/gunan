@@ -8047,23 +8047,23 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
 var markerPosition  = [ 
     {//0
         title: '중구',
-        latlng: new kakao.maps.LatLng(<?php $jglat ?>,<? $jglng ?>)
+        latlng: new kakao.maps.LatLng(<?php $jglat; ?>,<? $jglng; ?>)
     },
     {//1
         title: '서구', 
-        latlng: new kakao.maps.LatLng(<?php $sglat ?>,<? $sglng ?>)
+        latlng: new kakao.maps.LatLng(<?php $sglat; ?>,<? $sglng; ?>)
     },
     {//2
         title: '동구', 
-        latlng: new kakao.maps.LatLng(<?php $dglat ?>,<? $dglng ?>)
+        latlng: new kakao.maps.LatLng(<?php $dglat; ?>,<? $dglng; ?>)
     },
     {//3
         title: '영도구', 
-        latlng: new kakao.maps.LatLng(<?php $ydglat ?>,<? $ydglng ?>)
+        latlng: new kakao.maps.LatLng(<?php $ydglat; ?>,<? $ydglng; ?>)
     },
     {//4
         title: '부산진구', 
-        latlng: new kakao.maps.LatLng(<?php $jinglat ?>,<? $jinglng ?>)
+        latlng: new kakao.maps.LatLng(<?php $jinglat; ?>,<? $jinglng; ?>)
     },
     {//5
         title: '동래구', 
