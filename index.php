@@ -33,12 +33,13 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
     fclose($handle);
     $junggu = "SELECT lat, lng FROM busan WHERE name='junggu'";
     $getResults1 = sqlsrv_query($conn,$junggu);
-
     while ($row = sqlsrv_fetch_array($getResults1, SQLSRV_FETCH_ASSOC)){
       $x = $row['lat'];
       $y = $row['lng'];
     }
-    
+    echo $x;
+    echo $y;
+    //sqlsrv_free_stst($stst);
     sqlsrv_close($conn);
 ?>
 <!DOCTYPE html>
@@ -175,7 +176,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
   </ul>
   <ul>
   <p> 세계적 코로나 확진자 증가 그래프 </p>
-  <div class="flourish-embed flourish-bar-chart-race" data-src="visualisation/2872150" data-url="https://flo.uri.sh/visualisation/2872150/embed"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+    <div class="flourish-embed flourish-bar-chart-race" data-src="visualisation/2675613" data-url="https://flo.uri.sh/visualisation/2675613/embed"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
   </ul>
 </div>
 <div class="container2">
