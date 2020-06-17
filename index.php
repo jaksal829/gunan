@@ -33,12 +33,34 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
     fclose($handle);
     $junggu = "SELECT lat, lng FROM busan WHERE name='junggu'";
     $getResults1 = sqlsrv_query($conn,$junggu);
-    while ($row = sqlsrv_fetch_array($getResults1, SQLSRV_FETCH_ASSOC)){
-      $x = $row['lat'];
-      $y = $row['lng'];
+    while ($row1 = sqlsrv_fetch_array($getResults1, SQLSRV_FETCH_ASSOC)){
+      $jglat = $row1['lat'];
+      $jglng = $row1['lng'];
     }
-    echo $x;
-    echo $y;
+    $seogu = "SELECT lat, lng FROM busan WHERE name='seogu'";
+    $getResults2 = sqlsrv_query($conn,$seogu);
+    while ($row2 = sqlsrv_fetch_array($getResults2, SQLSRV_FETCH_ASSOC)){
+      $sglat = $row2['lat'];
+      $sglng = $row2['lng'];
+    }
+    $donggu = "SELECT lat, lng FROM busan WHERE name='donggu'";
+    $getResults3 = sqlsrv_query($conn,$donggu);
+    while ($row3 = sqlsrv_fetch_array($getResults3, SQLSRV_FETCH_ASSOC)){
+      $dglat = $row3['lat'];
+      $dglng = $row3['lng'];
+    }
+    $youngdogu = "SELECT lat, lng FROM busan WHERE name='youngdogu'";
+    $getResults4 = sqlsrv_query($conn,$youngdogu);
+    while ($row4 = sqlsrv_fetch_array($getResults4, SQLSRV_FETCH_ASSOC)){
+      $ydglat = $row4['lat'];
+      $ydglng = $row4['lng'];
+    }
+    $jingu = "SELECT lat, lng FROM busan WHERE name='jingu'";
+    $getResults5 = sqlsrv_query($conn,$jingu);
+    while ($row5 = sqlsrv_fetch_array($getResults5, SQLSRV_FETCH_ASSOC)){
+      $jinglat = $row5['lat'];
+      $jinglng = $row5['lng'];
+    }
     //sqlsrv_free_stst($stst);
     sqlsrv_close($conn);
 ?>
@@ -8022,6 +8044,84 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
         ]
     }
 ];
+var markerPosition  = [ 
+    {//0
+        title: '중구',
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.1065076, 129.0321071)
+    },
+    {//1
+        title: '서구', 
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.1075386, 129.0159046)
+    },
+    {//2
+        title: '동구', 
+        content: '<div style="padding:5px;"></div>',
+        latlng: new kakao.maps.LatLng(35.1293484, 129.0427185)
+    },
+    {//3
+        title: '영도구', 
+        content: '<div style="padding:5px;"></div>',
+        latlng: new kakao.maps.LatLng(35.0902906, 129.0658315)
+    },
+    {//4
+        title: '부산진구', 
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.1463142, 129.0577904)
+    },
+    {//5
+        title: '동래구', 
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.2113886, 129.0776738)
+    },
+    {//6
+        title: '남구', 
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.1360492, 129.0827931)
+    },
+    {//7
+        title: '북구', 
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.2392452, 129.0125958)
+    },
+    {//8
+        title: '해운대구',
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.1641183, 129.1764714)
+    },
+    {//9
+        title: '사하구', 
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.0940152, 128.9564904)
+    },
+    {//10
+        title: '금정구', 
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.2420519, 129.0902829)
+    },
+    {//11
+        title: '강서구', 
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.1804031, 128.9550841)
+    },{//12
+        title: '연제구', 
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.1768371, 129.0769526)
+    },{//13
+        title: '수영구', 
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.1625706, 129.1113024)
+    },{//14
+        title: '사상구', 
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.1524214, 128.9898503)
+    },{//15
+        title: '기장군', 
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.2435267, 129.2207769)
+    }
+];
 </script>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -8125,18 +8225,34 @@ function displayArea(area) {
          default : map.setLevel(level, {anchor: new kakao.maps.LatLng(33.350213, 126.501045)}, {animate: true});
       }
       setMarkers(null);
+      for (var i = 0; i < markerPosition.length; i ++) {
+        var marker = new kakao.maps.Marker({
+            map: map, // 마커를 표시할 지도
+            title : markerPosition[i].title,
+            position: markerPosition[i].latlng // 마커를 표시할 위치
+        });
+        var infowindow = new kakao.maps.InfoWindow({
+          content : markerPosition[i].content,
+          removable : true // x 표시
+        });
+        kakao.maps.event.addListener(marker, 'click', makeClick(map,marker,infowindow));
+      }
     });
-    
+}
+function makeClick(map, marker, infowindow) {
+  return function() {
+    infowindow.open(map,marker);
+  };
 }
 function setMarkers(map) {
-    for (var i = 0; i < markers.length; i++) {
-        markers[i].setMap(map);
-    }            
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(map);
+  }            
 }
 function showMarkers() {
-    map.setCenter(new kakao.maps.LatLng(36.189320, 128.003166));
-    map.setLevel(13);
-    setMarkers(map);
+  map.setCenter(new kakao.maps.LatLng(36.189320, 128.003166));
+  map.setLevel(13);
+  setMarkers(map);
 }
 </script>
 </body>
