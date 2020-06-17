@@ -8216,19 +8216,17 @@ function displayArea(area) {
             title : markerPosition[i].title,
             position: markerPosition[i].latlng // 마커를 표시할 위치
         });
+        var infowindow = new kakao.maps.InfoWindow({
+          content : markerPosition[i].content
+      });
       }
-      
+      kakao.maps.event.addListener(marker, 'click', makeClick(map,marker,infowindow));
     });
-    kakao.maps.event.addListener(marker, 'click', function(mouseEvent){
-      var content = '<div class="info">' + 
-                '   <div class="title">' + area.name + '</div>' +
-                '   <div class="size">총 면적 : 약 ' + Math.floor(polygon.getArea()) + ' m<sup>2</sup></area>' +
-                '</div>';
-
-      infowindow.setContent(content); 
-      infowindow.setPosition(mouseEvent.latLng); 
-      infowindow.setMap(map);
-    });
+}
+function makeClick(map, marker, infowindow) {
+    return function() {
+        infowindow.open(map,marker);
+    };
 }
 function setMarkers(map) {
   for (var i = 0; i < markers.length; i++) {
