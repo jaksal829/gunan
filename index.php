@@ -8047,78 +8047,62 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
 var markerPosition  = [ 
     {//0
         title: '중구',
-        content: '<div style="padding:5px;"></div>', 
-        latlng: new kakao.maps.LatLng(35.1065076, 129.0321071)
+        latlng: new kakao.maps.LatLng(<?php $jglat ?>,<? $jglng ?>)
     },
     {//1
         title: '서구', 
-        content: '<div style="padding:5px;"></div>', 
-        latlng: new kakao.maps.LatLng(35.1075386, 129.0159046)
+        latlng: new kakao.maps.LatLng(<?php $sglat ?>,<? $sglng ?>)
     },
     {//2
         title: '동구', 
-        content: '<div style="padding:5px;"></div>',
-        latlng: new kakao.maps.LatLng(35.1293484, 129.0427185)
+        latlng: new kakao.maps.LatLng(<?php $dglat ?>,<? $dglng ?>)
     },
     {//3
         title: '영도구', 
-        content: '<div style="padding:5px;"></div>',
-        latlng: new kakao.maps.LatLng(35.0902906, 129.0658315)
+        latlng: new kakao.maps.LatLng(<?php $ydglat ?>,<? $ydglng ?>)
     },
     {//4
         title: '부산진구', 
-        content: '<div style="padding:5px;"></div>', 
-        latlng: new kakao.maps.LatLng(35.1463142, 129.0577904)
+        latlng: new kakao.maps.LatLng(<?php $jinglat ?>,<? $jinglng ?>)
     },
     {//5
         title: '동래구', 
-        content: '<div style="padding:5px;"></div>', 
         latlng: new kakao.maps.LatLng(35.2113886, 129.0776738)
     },
     {//6
         title: '남구', 
-        content: '<div style="padding:5px;"></div>', 
         latlng: new kakao.maps.LatLng(35.1360492, 129.0827931)
     },
     {//7
         title: '북구', 
-        content: '<div style="padding:5px;"></div>', 
         latlng: new kakao.maps.LatLng(35.2392452, 129.0125958)
     },
     {//8
         title: '해운대구',
-        content: '<div style="padding:5px;"></div>', 
         latlng: new kakao.maps.LatLng(35.1641183, 129.1764714)
     },
     {//9
         title: '사하구', 
-        content: '<div style="padding:5px;"></div>', 
         latlng: new kakao.maps.LatLng(35.0940152, 128.9564904)
     },
     {//10
         title: '금정구', 
-        content: '<div style="padding:5px;"></div>', 
         latlng: new kakao.maps.LatLng(35.2420519, 129.0902829)
     },
     {//11
         title: '강서구', 
-        content: '<div style="padding:5px;"></div>', 
         latlng: new kakao.maps.LatLng(35.1804031, 128.9550841)
     },{//12
         title: '연제구', 
-        content: '<div style="padding:5px;"></div>', 
         latlng: new kakao.maps.LatLng(35.1768371, 129.0769526)
     },{//13
         title: '수영구', 
-        content: '<div style="padding:5px;"></div>', 
         latlng: new kakao.maps.LatLng(35.1625706, 129.1113024)
     },{//14
         title: '사상구', 
-        content: '<div style="padding:5px;"></div>', 
         latlng: new kakao.maps.LatLng(35.1524214, 128.9898503)
     },{//15
         title: '기장군', 
-        content: '<div style="padding:5px;"></div>', 
         latlng: new kakao.maps.LatLng(35.2435267, 129.2207769)
     }
 ];
@@ -8243,6 +8227,9 @@ function makeClick(map, marker, infowindow) {
   return function() {
     infowindow.open(map,marker);
   };
+    // infowindow.setContent(content); 
+    // infowindow.setPosition(mouseEvent.latLng); 
+    // infowindow.setMap(map);
 }
 function setMarkers(map) {
   for (var i = 0; i < markers.length; i++) {
