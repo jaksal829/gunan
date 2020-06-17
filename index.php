@@ -189,7 +189,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
     <p> 코로나 카카오 맵 API </p>
       <div id="map" class="container"></div>
       <p>
-        <button onclick="showMarkers()">원점</button>
+        <button onclick="showPolygons()">원점</button>
     </p> 
   </ul>
   <ul class="cmap">
@@ -8048,27 +8048,27 @@ var markerPosition  = [
     {//0
         title: '중구',
         content: '<div style="padding:5px;"></div>', 
-        latlng: new kakao.maps.LatLng(35.1065076, 129.0321071)
+        latlng: new kakao.maps.LatLng(<? echo $jglat ?> , <? echo $jglng ?>)
     },
     {//1
         title: '서구', 
         content: '<div style="padding:5px;"></div>', 
-        latlng: new kakao.maps.LatLng(35.1075386, 129.0159046)
+        latlng: new kakao.maps.LatLng(<? echo $sglat ?> , <? echo $sglng ?>)
     },
     {//2
         title: '동구', 
         content: '<div style="padding:5px;"></div>',
-        latlng: new kakao.maps.LatLng(35.1293484, 129.0427185)
+        latlng: new kakao.maps.LatLng(<? echo $dglat ?> , <? echo $dglng ?>)
     },
     {//3
         title: '영도구', 
         content: '<div style="padding:5px;"></div>',
-        latlng: new kakao.maps.LatLng(35.0902906, 129.0658315)
+        latlng: new kakao.maps.LatLng(<? echo $ydglat ?> , <? echo $ydglng ?>)
     },
     {//4
         title: '부산진구', 
         content: '<div style="padding:5px;"></div>', 
-        latlng: new kakao.maps.LatLng(35.1463142, 129.0577904)
+        latlng: new kakao.maps.LatLng(<? echo $jinglat ?> , <? echo $jinglng ?>)
     },
     {//5
         title: '동래구', 
@@ -8134,7 +8134,7 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 var map = new kakao.maps.Map(mapContainer, mapOption),
     customOverlay = new kakao.maps.CustomOverlay({});
 
-var markers = [];
+var polygons = [];
 //map.setDraggable(false);
 //map.setZoomable(false);
 // 지도에 영역데이터를 폴리곤으로 표시합니다 
@@ -8155,7 +8155,7 @@ function displayArea(area) {
         fillColor: '#fff',
         fillOpacity: 0.7 
     });
-    markers.push(polygon);
+    polygons.push(polygon);
      
     // 다각형에 mouseover 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 변경합니다 
     // 지역명을 표시하는 커스텀오버레이를 지도위에 표시합니다
@@ -8224,7 +8224,7 @@ function displayArea(area) {
          break;
          default : map.setLevel(level, {anchor: new kakao.maps.LatLng(33.350213, 126.501045)}, {animate: true});
       }
-      setMarkers(null);
+      setPolygons(null);
       for (var i = 0; i < markerPosition.length; i ++) {
         var marker = new kakao.maps.Marker({
             map: map, // 마커를 표시할 지도
@@ -8233,7 +8233,8 @@ function displayArea(area) {
         });
         var infowindow = new kakao.maps.InfoWindow({
           content : markerPosition[i].content,
-          removable : true // x 표시
+          removable : true, // x 표시
+          zindex : 1
         });
         kakao.maps.event.addListener(marker, 'click', makeClick(map,marker,infowindow));
       }
@@ -8244,15 +8245,15 @@ function makeClick(map, marker, infowindow) {
     infowindow.open(map,marker);
   };
 }
-function setMarkers(map) {
-  for (var i = 0; i < markers.length; i++) {
-    markers[i].setMap(map);
+function setPolygons(map) {
+  for (var i = 0; i < polygons.length; i++) {
+    polygons[i].setMap(map);
   }            
 }
-function showMarkers() {
+function showPolygons() {
   map.setCenter(new kakao.maps.LatLng(36.189320, 128.003166));
   map.setLevel(13);
-  setMarkers(map);
+  setPolygons(map);
 }
 </script>
 </body>
