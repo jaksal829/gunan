@@ -8050,63 +8050,79 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
 var markerPosition  = [ 
     {//0
         title: '중구',
-        latlng: new kakao.maps.LatLng(<?php echo $jglat; ?>,<? echo $jglng; ?>)
+        latlng: new kakao.maps.LatLng(<?php echo $jglat; ?>,<? echo $jglng; ?>),
+        content : '<div>아아</div>'
     },
     {//1
         title: '서구', 
-        latlng: new kakao.maps.LatLng(<?php echo $sglat; ?>,<? echo $sglng; ?>)
+        latlng: new kakao.maps.LatLng(<?php echo $sglat; ?>,<? echo $sglng; ?>),
+        content : '<div>아아</div>'
     },
     {//2
         title: '동구', 
-        latlng: new kakao.maps.LatLng(<?php echo $dglat; ?>,<? echo $dglng; ?>)
+        latlng: new kakao.maps.LatLng(<?php echo $dglat; ?>,<? echo $dglng; ?>),
+        content : '<div>아아</div>'
     },
     {//3
         title: '영도구', 
-        latlng: new kakao.maps.LatLng(<?php echo $ydglat; ?>,<? echo $ydglng; ?>)
+        latlng: new kakao.maps.LatLng(<?php echo $ydglat; ?>,<? echo $ydglng; ?>),
+        content : '<div>아아</div>'
     },
     {//4
         title: '부산진구', 
-        latlng: new kakao.maps.LatLng(<?php echo $jinglat; ?>,<? echo $jinglng; ?>)
+        latlng: new kakao.maps.LatLng(<?php echo $jinglat; ?>,<? echo $jinglng; ?>),
+        content : '<div>아아</div>'
     },
     {//5
         title: '동래구', 
-        latlng: new kakao.maps.LatLng(35.2113886, 129.0776738)
+        latlng: new kakao.maps.LatLng(35.2113886, 129.0776738),
+        content : '<div>아아</div>'
     },
     {//6
         title: '남구', 
-        latlng: new kakao.maps.LatLng(35.1360492, 129.0827931)
+        latlng: new kakao.maps.LatLng(35.1360492, 129.0827931),
+        content : '<div>아아</div>'
     },
     {//7
         title: '북구', 
-        latlng: new kakao.maps.LatLng(35.2392452, 129.0125958)
+        latlng: new kakao.maps.LatLng(35.2392452, 129.0125958),
+        content : '<div>아아</div>'
     },
     {//8
         title: '해운대구',
-        latlng: new kakao.maps.LatLng(35.1641183, 129.1764714)
+        latlng: new kakao.maps.LatLng(35.1641183, 129.1764714),
+        content : '<div>아아</div>'
     },
     {//9
         title: '사하구', 
-        latlng: new kakao.maps.LatLng(35.0940152, 128.9564904)
+        latlng: new kakao.maps.LatLng(35.0940152, 128.9564904),
+        content : '<div>아아</div>'
     },
     {//10
         title: '금정구', 
-        latlng: new kakao.maps.LatLng(35.2420519, 129.0902829)
+        latlng: new kakao.maps.LatLng(35.2420519, 129.0902829),
+        content : '<div>아아</div>'
     },
     {//11
         title: '강서구', 
-        latlng: new kakao.maps.LatLng(35.1804031, 128.9550841)
+        latlng: new kakao.maps.LatLng(35.1804031, 128.9550841),
+        content : '<div>아아</div>'
     },{//12
         title: '연제구', 
-        latlng: new kakao.maps.LatLng(35.1768371, 129.0769526)
+        latlng: new kakao.maps.LatLng(35.1768371, 129.0769526),
+        content : '<div>아아</div>'
     },{//13
         title: '수영구', 
-        latlng: new kakao.maps.LatLng(35.1625706, 129.1113024)
+        latlng: new kakao.maps.LatLng(35.1625706, 129.1113024),
+        content : '<div>아아</div>'
     },{//14
         title: '사상구', 
-        latlng: new kakao.maps.LatLng(35.1524214, 128.9898503)
+        latlng: new kakao.maps.LatLng(35.1524214, 128.9898503),
+        content : '<div>아아</div>'
     },{//15
         title: '기장군', 
-        latlng: new kakao.maps.LatLng(35.2435267, 129.2207769)
+        latlng: new kakao.maps.LatLng(35.2435267, 129.2207769),
+        content : '<div>아아</div>'
     }
 ];
 </script>
@@ -8119,8 +8135,7 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     };
 // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 var map = new kakao.maps.Map(mapContainer, mapOption),
-    customOverlay = new kakao.maps.CustomOverlay({}),
-    infowindow = new kakao.maps.InfoWindow({removable: true});
+    customOverlay = new kakao.maps.CustomOverlay({});
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
 
@@ -8222,6 +8237,10 @@ function displayArea(area) {
             map: map, // 마커를 표시할 지도
             title : markerPosition[i].title,
             position: markerPosition[i].latlng // 마커를 표시할 위치
+        });
+        var infowindow = new kakao.maps.InfoWindow({
+            content : markerPosition[i].content,
+            removable : true // x 표시
         });
         kakao.maps.event.addListener(marker, 'click', makeClick(map,marker,infowindow));
       }
