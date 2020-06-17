@@ -8222,10 +8222,16 @@ function displayArea(area) {
             title : markerPosition[i].title,
             position: markerPosition[i].latlng // 마커를 표시할 위치
         });
+        kakao.maps.event.addListener(marker, 'click', makeClick(map,marker,infowindow));
       }
     });
-    kakao.maps.event.addListener(marker, 'click', makeClick(map,marker,infowindow));
+    
 }
+function makeClick(map, marker, infowindow) {
+                return function() {
+                    infowindow.open(map,marker);
+                };
+            }
 // function makeClick(map, marker, infowindow) {
 //     return function() {
 //         infowindow.open(map,marker);
