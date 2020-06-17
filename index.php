@@ -92,7 +92,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
       .container {
         float: left;
         width: 870px;
-        height: 852px;
+        height: 800px;
       }
       .container2 {
         float: left;
@@ -8232,7 +8232,8 @@ function displayArea(area) {
             title : markerPosition[i].title,
             position: markerPosition[i].latlng // 마커를 표시할 위치
         });
-        kakao.maps.event.addListener(marker, 'click', function(){
+      }
+      kakao.maps.event.addListener(marker, 'click', function(){
           searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
           if (status === kakao.maps.services.Status.OK) {
               var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
@@ -8249,9 +8250,7 @@ function displayArea(area) {
               infowindow.setMap(map);
             }   
           });
-          
         });
-      }
     });
 }
 function setPolygons(map) {
