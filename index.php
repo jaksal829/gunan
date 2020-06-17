@@ -8224,12 +8224,7 @@ function displayArea(area) {
         });
       }
     });
-    kakao.maps.event.addListener(marker, 'click', makeClick(map,marker,infowindow));
-}
-
-function makeClick(map, marker, infowindow) {
-    return function() {
-        infowindow.open(map,marker);
+    kakao.maps.event.addListener(marker, 'click', function(){
         if (status === kakao.maps.services.Status.OK) {
             var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
             detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
@@ -8243,11 +8238,11 @@ function makeClick(map, marker, infowindow) {
             infowindow.setContent(content);
             infowindow.open(map, marker);
         }
-    };
+    });
+    kakao.maps.event.addListener(map, 'idle', function() {
+        searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+    });
 }
-kakao.maps.event.addListener(map, 'idle', function() {
-    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
-});
 function searchAddrFromCoords(coords, callback) {
     // 좌표로 행정동 주소 정보를 요청합니다
     geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);         
