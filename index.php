@@ -168,9 +168,6 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
     .info .title {
       font-weight: bold;
     }
-    .hAddr {position:absolute;left:10px;top:10px;border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;}
-    #centerAddr {display:block;margin-top:2px;font-weight: normal;}
-    .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
     </style>
     <title>COVID-19</title>
 </head>
@@ -192,7 +189,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
     <p> 코로나 카카오 맵 API </p>
       <div id="map" class="container"></div>
       <p>
-        <button onclick="showpolygons()">원점</button>
+        <button onclick="showMarkers()">원점</button>
     </p> 
   </ul>
   <ul class="cmap">
@@ -8050,79 +8047,79 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
 var markerPosition  = [ 
     {//0
         title: '중구',
-        latlng: new kakao.maps.LatLng(<?php echo $jglat; ?>,<? echo $jglng; ?>),
-        content : '<div>아아</div>'
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.1065076, 129.0321071)
     },
     {//1
         title: '서구', 
-        latlng: new kakao.maps.LatLng(<?php echo $sglat; ?>,<? echo $sglng; ?>),
-        content : '<div>아아</div>'
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.1075386, 129.0159046)
     },
     {//2
         title: '동구', 
-        latlng: new kakao.maps.LatLng(<?php echo $dglat; ?>,<? echo $dglng; ?>),
-        content : '<div>아아</div>'
+        content: '<div style="padding:5px;"></div>',
+        latlng: new kakao.maps.LatLng(35.1293484, 129.0427185)
     },
     {//3
         title: '영도구', 
-        latlng: new kakao.maps.LatLng(<?php echo $ydglat; ?>,<? echo $ydglng; ?>),
-        content : '<div>아아</div>'
+        content: '<div style="padding:5px;"></div>',
+        latlng: new kakao.maps.LatLng(35.0902906, 129.0658315)
     },
     {//4
         title: '부산진구', 
-        latlng: new kakao.maps.LatLng(<?php echo $jinglat; ?>,<? echo $jinglng; ?>),
-        content : '<div>아아</div>'
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.1463142, 129.0577904)
     },
     {//5
         title: '동래구', 
-        latlng: new kakao.maps.LatLng(35.2113886, 129.0776738),
-        content : '<div>아아</div>'
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.2113886, 129.0776738)
     },
     {//6
         title: '남구', 
-        latlng: new kakao.maps.LatLng(35.1360492, 129.0827931),
-        content : '<div>아아</div>'
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.1360492, 129.0827931)
     },
     {//7
         title: '북구', 
-        latlng: new kakao.maps.LatLng(35.2392452, 129.0125958),
-        content : '<div>아아</div>'
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.2392452, 129.0125958)
     },
     {//8
         title: '해운대구',
-        latlng: new kakao.maps.LatLng(35.1641183, 129.1764714),
-        content : '<div>아아</div>'
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.1641183, 129.1764714)
     },
     {//9
         title: '사하구', 
-        latlng: new kakao.maps.LatLng(35.0940152, 128.9564904),
-        content : '<div>아아</div>'
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.0940152, 128.9564904)
     },
     {//10
         title: '금정구', 
-        latlng: new kakao.maps.LatLng(35.2420519, 129.0902829),
-        content : '<div>아아</div>'
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.2420519, 129.0902829)
     },
     {//11
         title: '강서구', 
-        latlng: new kakao.maps.LatLng(35.1804031, 128.9550841),
-        content : '<div>아아</div>'
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.1804031, 128.9550841)
     },{//12
         title: '연제구', 
-        latlng: new kakao.maps.LatLng(35.1768371, 129.0769526),
-        content : '<div>아아</div>'
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.1768371, 129.0769526)
     },{//13
         title: '수영구', 
-        latlng: new kakao.maps.LatLng(35.1625706, 129.1113024),
-        content : '<div>아아</div>'
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.1625706, 129.1113024)
     },{//14
         title: '사상구', 
-        latlng: new kakao.maps.LatLng(35.1524214, 128.9898503),
-        content : '<div>아아</div>'
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.1524214, 128.9898503)
     },{//15
         title: '기장군', 
-        latlng: new kakao.maps.LatLng(35.2435267, 129.2207769),
-        content : '<div>아아</div>'
+        content: '<div style="padding:5px;"></div>', 
+        latlng: new kakao.maps.LatLng(35.2435267, 129.2207769)
     }
 ];
 </script>
@@ -8136,12 +8133,8 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 var map = new kakao.maps.Map(mapContainer, mapOption),
     customOverlay = new kakao.maps.CustomOverlay({});
-// 주소-좌표 변환 객체를 생성합니다
-var geocoder = new kakao.maps.services.Geocoder();
 
-var polygons = [];
-// 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
-//searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+var markers = [];
 //map.setDraggable(false);
 //map.setZoomable(false);
 // 지도에 영역데이터를 폴리곤으로 표시합니다 
@@ -8162,7 +8155,7 @@ function displayArea(area) {
         fillColor: '#fff',
         fillOpacity: 0.7 
     });
-    polygons.push(polygon);
+    markers.push(polygon);
      
     // 다각형에 mouseover 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 변경합니다 
     // 지역명을 표시하는 커스텀오버레이를 지도위에 표시합니다
@@ -8231,7 +8224,7 @@ function displayArea(area) {
          break;
          default : map.setLevel(level, {anchor: new kakao.maps.LatLng(33.350213, 126.501045)}, {animate: true});
       }
-      setpolygons(null);
+      setMarkers(null);
       for (var i = 0; i < markerPosition.length; i ++) {
         var marker = new kakao.maps.Marker({
             map: map, // 마커를 표시할 지도
@@ -8239,8 +8232,8 @@ function displayArea(area) {
             position: markerPosition[i].latlng // 마커를 표시할 위치
         });
         var infowindow = new kakao.maps.InfoWindow({
-            content : markerPosition[i].content,
-            removable : true // x 표시
+          content : markerPosition[i].content,
+          removable : true // x 표시
         });
         kakao.maps.event.addListener(marker, 'click', makeClick(map,marker,infowindow));
       }
@@ -8248,60 +8241,18 @@ function displayArea(area) {
 }
 function makeClick(map, marker, infowindow) {
   return function() {
-      infowindow.open(map,marker);
+    infowindow.open(map,marker);
   };
 }
-// function makeClick(map, marker, infowindow) {
-//     return function() {
-//         infowindow.open(map,marker);
-//         if (status === kakao.maps.services.Status.OK) {
-//             var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
-//             detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
-            
-//             var content = '<div class="bAddr">' +
-//                             '<span class="title">법정동 주소정보</span>' + 
-//                             detailAddr + 
-//                         '</div>';
-
-//             // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
-//             infowindow.setContent(content);
-//             infowindow.open(map, marker);
-//         }
-//     };
-// }
-// kakao.maps.event.addListener(map, 'idle', function() {
-//     searchAddrFromCoords(map.getCenter(), displayCenterInfo);
-// });
-// function searchAddrFromCoords(coords, callback) {
-//     // 좌표로 행정동 주소 정보를 요청합니다
-//     geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);         
-// }
-// function searchDetailAddrFromCoords(coords, callback) {
-//     // 좌표로 법정동 상세 주소 정보를 요청합니다
-//     geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
-// }
-// function displayCenterInfo(result, status) {
-//     if (status === kakao.maps.services.Status.OK) {
-//         var infoDiv = document.getElementById('centerAddr');
-
-//         for(var i = 0; i < result.length; i++) {
-//             // 행정동의 region_type 값은 'H' 이므로
-//             if (result[i].region_type === 'H') {
-//                 infoDiv.innerHTML = result[i].address_name;
-//                 break;
-//             }
-//         }
-//     }    
-// }
-function setpolygons(map) {
-  for (var i = 0; i < polygons.length; i++) {
-    polygons[i].setMap(map);
+function setMarkers(map) {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(map);
   }            
 }
-function showpolygons() {
+function showMarkers() {
   map.setCenter(new kakao.maps.LatLng(36.189320, 128.003166));
   map.setLevel(13);
-  setpolygons(map);
+  setMarkers(map);
 }
 </script>
 </body>
