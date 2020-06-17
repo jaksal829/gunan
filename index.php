@@ -8245,11 +8245,11 @@ function displayArea(area) {
 
               // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
               infowindow.setContent(content);
-              infowindow.open(map, marker);
+              //infowindow.open(map, marker);
+              infowindow.setMap(map);
             }   
           });
-          // infowindow.setContent(content); 
-          // infowindow.setMap(map);
+          
         });
       }
     });
@@ -8264,6 +8264,7 @@ function showPolygons() {
   map.setLevel(13);
   setPolygons(map);
 }
+
 
 
 // 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
