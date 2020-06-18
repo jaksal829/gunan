@@ -8160,7 +8160,20 @@ var polygons = [];
 for (var a = 0; a < areas.length; a++) {
     displayArea(areas[a]);
 }
+var linePath = [
+    new kakao.maps.LatLng(35.088197, 129.018662),
+    new kakao.maps.LatLng(35.114518, 129.015275),
+    new kakao.maps.LatLng(35.126454, 129.047057) 
+];
 
+// 지도에 표시할 선을 생성합니다
+var polyline = new kakao.maps.Polyline({
+    path: linePath, // 선을 구성하는 좌표배열 입니다
+    strokeWeight: 5, // 선의 두께 입니다
+    strokeColor: 'blue', // 선의 색깔입니다
+    strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+    strokeStyle: 'solid' // 선의 스타일입니다
+});
 // 다각형을 생상하고 이벤트를 등록하는 함수입니다
 function displayArea(area) {
     
