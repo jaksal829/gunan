@@ -8244,8 +8244,8 @@ function displayArea(area) {
 
           // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
           infowindow.setContent(content);
-          //infowindow.open(map, marker);
-          infowindow.setMap(map);
+          infowindow.open(map, marker);
+          //infowindow.setMap(map);
         }   
       });
     });
