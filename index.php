@@ -8236,14 +8236,16 @@ function displayArea(area) {
     });
     searchAddrFromCoords(map.getCenter(), displayCenterInfo);
 
-    kakao.maps.event.addListener(marker, 'click', function(mouseEvent){
+    kakao.maps.event.addListener(map, 'click', function(mouseEvent){
       searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
       if (status === kakao.maps.services.Status.OK) {
           var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
           detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
           
           var content = '<div class="bAddr">' + '<span class="title">법정동 주소정보</span>' + detailAddr + '</div>';
-
+          // 마커를 클릭한 위치에 표시합니다 
+          marker.setPosition(mouseEvent.latLng);
+          marker.setMap(map);
           // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
           infowindow.setContent(content);
           infowindow.open(map, marker);
