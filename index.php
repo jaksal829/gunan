@@ -8226,11 +8226,11 @@ function displayArea(area) {
          default : map.setLevel(level, {anchor: new kakao.maps.LatLng(33.350213, 126.501045)}, {animate: true});
       }
       setPolygons(null);
-      for (var i = 0; i < markerPosition.length; i ++) {
+      for (var mk = 0; mk < markerPosition.length; mk ++) {
         var marker = new kakao.maps.Marker({
             map: map, // 마커를 표시할 지도
-            title : markerPosition[i].title,
-            position: markerPosition[i].latlng // 마커를 표시할 위치
+            title : markerPosition[mk].title,
+            position: markerPosition[mk].latlng // 마커를 표시할 위치
         });
       }
     });
@@ -8240,10 +8240,7 @@ function displayArea(area) {
           var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
           detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
           
-          var content = '<div class="bAddr">' +
-                          '<span class="title">법정동 주소정보</span>' + 
-                          detailAddr + 
-                      '</div>';
+          var content = '<div class="bAddr">' + '<span class="title">법정동 주소정보</span>' + detailAddr + '</div>';
 
           // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
           infowindow.setContent(content);
