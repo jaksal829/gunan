@@ -8057,78 +8057,78 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
 var markerPosition  = [ 
     {//0
         title: '중구',
-        content: '<div style="padding:5px;">중구 보건소<br><p>주소 : 부산광역시 중구 중구로 120(대청동1가)</p></div>'
+        content: '<div style="padding:5px;">중구 보건소<br><p>주소 : 부산광역시 중구 중구로 120(대청동1가)</p></div>',
         latlng: new kakao.maps.LatLng(<? echo $jglat ?> , <? echo $jglng ?>)
     },
     {//1
         title: '서구', 
-        content: 
+        content: ,
         latlng: new kakao.maps.LatLng(<? echo $sglat ?> , <? echo $sglng ?>)
     },
     {//2
         title: '동구', 
-        content: 
+        content: ,
         latlng: new kakao.maps.LatLng(<? echo $dglat ?> , <? echo $dglng ?>)
     },
     {//3
         title: '영도구', 
-        content: 
+        content: ,
         latlng: new kakao.maps.LatLng(<? echo $ydglat ?> , <? echo $ydglng ?>)
     },
     {//4
         title: '부산진구', 
-        content: 
+        content: ,
         latlng: new kakao.maps.LatLng(<? echo $jinglat ?> , <? echo $jinglng ?>)
     },
     {//5
         title: '동래구', 
-        content: 
+        content: ,
         latlng: new kakao.maps.LatLng(35.2113886, 129.0776738)
     },
     {//6
         title: '남구', 
-        content: 
+        content: ,
         latlng: new kakao.maps.LatLng(35.1360492, 129.0827931)
     },
     {//7
         title: '북구', 
-        content: 
+        content: ,
         latlng: new kakao.maps.LatLng(35.2392452, 129.0125958)
     },
     {//8
         title: '해운대구',
-        content: 
+        content: ,
         latlng: new kakao.maps.LatLng(35.1641183, 129.1764714)
     },
     {//9
         title: '사하구', 
-        content: 
+        content: ,
         latlng: new kakao.maps.LatLng(35.0940152, 128.9564904)
     },
     {//10
         title: '금정구', 
-        content: 
+        content: ,
         latlng: new kakao.maps.LatLng(35.2420519, 129.0902829)
     },
     {//11
         title: '강서구', 
-        content: 
+        content: ,
         latlng: new kakao.maps.LatLng(35.1804031, 128.9550841)
     },{//12
         title: '연제구', 
-        content: 
+        content: ,
         latlng: new kakao.maps.LatLng(35.1768371, 129.0769526)
     },{//13
         title: '수영구', 
-        content: 
+        content: ,
         latlng: new kakao.maps.LatLng(35.1625706, 129.1113024)
     },{//14
         title: '사상구',
-        content:  
+        content:  ,
         latlng: new kakao.maps.LatLng(35.1524214, 128.9898503)
     },{//15
         title: '기장군', 
-        content: 
+        content: ,
         latlng: new kakao.maps.LatLng(35.2435267, 129.2207769)
     }
 ];
