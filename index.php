@@ -193,10 +193,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
     <p> 코로나 카카오 맵 API </p>
     <div class="map_wrap">
       <div id="map" class="container" style="relative;overflow:hidden;"></div>
-      <div class="hAddr">
-        <span class="title">지도중심기준 행정동 주소정보</span>
-        <span id="centerAddr"></span>
-      </div>
+      
     </div>
       <p>
         <button onclick="showPolygons()">원점</button>
