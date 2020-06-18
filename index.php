@@ -8134,7 +8134,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption),
 
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
-searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+
 var polygons = [];
 //map.setDraggable(false);
 //map.setZoomable(false);
@@ -8234,7 +8234,9 @@ function displayArea(area) {
         });
       }
     });
-    kakao.maps.event.addListener(marker, 'click', function(){
+    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+
+    kakao.maps.event.addListener(marker, 'click', function(mouseEvent){
       searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
       if (status === kakao.maps.services.Status.OK) {
           var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
@@ -8245,7 +8247,6 @@ function displayArea(area) {
           // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
           infowindow.setContent(content);
           infowindow.open(map, marker);
-          //infowindow.setMap(map);
         }   
       });
     });
