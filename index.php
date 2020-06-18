@@ -8135,7 +8135,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption),
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
 
-
+//searchAddrFromCoords(map.getCenter(), displayCenterInfo);
 
 var polygons = [];
 //map.setDraggable(false);
@@ -8147,7 +8147,7 @@ for (var a = 0; a < areas.length; a++) {
 
 // 다각형을 생상하고 이벤트를 등록하는 함수입니다
 function displayArea(area) {
-    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+    
     // 다각형을 생성합니다 
     var polygon = new kakao.maps.Polygon({
         map: map, // 다각형을 표시할 지도 객체
