@@ -8133,7 +8133,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption),
     });
 
 // 주소-좌표 변환 객체를 생성합니다
-var geocoder = new kakao.maps.services.Geocoder();
+//var geocoder = new kakao.maps.services.Geocoder();
 
 //searchAddrFromCoords(map.getCenter(), displayCenterInfo);
 
