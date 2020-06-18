@@ -8250,7 +8250,7 @@ function displayArea(area) {
             title : markerPosition[mk].title,
             position: markerPosition[mk].latlng // 마커를 표시할 위치
         });
-        var infowindow = new kakao.maps.InfoWindow({content : markerPosition[i].content});
+        var infowindow = new kakao.maps.InfoWindow({content : markerPosition[mk].content});
         kakao.maps.event.addListener(marker, 'click', makeClick(map,marker,infowindow));
       }
     });
