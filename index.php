@@ -8234,6 +8234,7 @@ function displayArea(area) {
             title : markerPosition[mk].title,
             position: markerPosition[mk].latlng // 마커를 표시할 위치
         });
+        kakao.maps.event.addListener(marker, 'click', makeClick(map,marker,infowindow));
       }
     });
     
@@ -8265,8 +8266,13 @@ function showPolygons() {
   map.setLevel(13);
   setPolygons(map);
 }
+function makeClick(map, marker, infowindow) {
+    return function() {
+        infowindow.open(map,marker);
+    };
+}
 
-
+/*
 // 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
 kakao.maps.event.addListener(map, 'idle', function() {
     searchAddrFromCoords(map.getCenter(), displayCenterInfo);
@@ -8296,6 +8302,7 @@ function displayCenterInfo(result, status) {
         }
     }    
 }
+*/
 </script>
 </body>
 </html>
