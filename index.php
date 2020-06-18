@@ -8233,24 +8233,24 @@ function displayArea(area) {
             position: markerPosition[i].latlng // 마커를 표시할 위치
         });
       }
-      kakao.maps.event.addListener(marker, 'click', function(){
-          searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
-          if (status === kakao.maps.services.Status.OK) {
-              var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
-              detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
-              
-              var content = '<div class="bAddr">' +
-                              '<span class="title">법정동 주소정보</span>' + 
-                              detailAddr + 
-                          '</div>';
+    });
+    kakao.maps.event.addListener(marker, 'click', function(){
+      searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
+      if (status === kakao.maps.services.Status.OK) {
+          var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+          detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+          
+          var content = '<div class="bAddr">' +
+                          '<span class="title">법정동 주소정보</span>' + 
+                          detailAddr + 
+                      '</div>';
 
-              // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
-              infowindow.setContent(content);
-              //infowindow.open(map, marker);
-              infowindow.setMap(map);
-            }   
-          });
-        });
+          // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+          infowindow.setContent(content);
+          //infowindow.open(map, marker);
+          infowindow.setMap(map);
+        }   
+      });
     });
 }
 function setPolygons(map) {
@@ -8263,7 +8263,6 @@ function showPolygons() {
   map.setLevel(13);
   setPolygons(map);
 }
-
 
 
 // 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
