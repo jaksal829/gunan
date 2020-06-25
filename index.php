@@ -31,38 +31,37 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
         //echo "$sql<br />";
     }
     fclose($handle);
-    $junggu = "SELECT lat, lng FROM busan WHERE name='junggu'";
-    $getResults1 = sqlsrv_query($conn,$junggu);
-    while ($row1 = sqlsrv_fetch_array($getResults1, SQLSRV_FETCH_ASSOC)){
-      $jglat = $row1['lat'];
-      $jglng = $row1['lng'];
-    }
-    $seogu = "SELECT lat, lng FROM busan WHERE name='seogu'";
-    $getResults2 = sqlsrv_query($conn,$seogu);
-    while ($row2 = sqlsrv_fetch_array($getResults2, SQLSRV_FETCH_ASSOC)){
-      $sglat = $row2['lat'];
-      $sglng = $row2['lng'];
-    }
-    $donggu = "SELECT lat, lng FROM busan WHERE name='donggu'";
-    $getResults3 = sqlsrv_query($conn,$donggu);
-    while ($row3 = sqlsrv_fetch_array($getResults3, SQLSRV_FETCH_ASSOC)){
-      $dglat = $row3['lat'];
-      $dglng = $row3['lng'];
-    }
-    $youngdogu = "SELECT lat, lng FROM busan WHERE name='youngdogu'";
-    $getResults4 = sqlsrv_query($conn,$youngdogu);
-    while ($row4 = sqlsrv_fetch_array($getResults4, SQLSRV_FETCH_ASSOC)){
-      $ydglat = $row4['lat'];
-      $ydglng = $row4['lng'];
-    }
-    $jingu = "SELECT lat, lng FROM busan WHERE name='jingu'";
-    $getResults5 = sqlsrv_query($conn,$jingu);
-    while ($row5 = sqlsrv_fetch_array($getResults5, SQLSRV_FETCH_ASSOC)){
-      $jinglat = $row5['lat'];
-      $jinglng = $row5['lng'];
-    }
+    // $junggu = "SELECT lat, lng FROM busan WHERE name='junggu'";
+    // $getResults1 = sqlsrv_query($conn,$junggu);
+    // while ($row1 = sqlsrv_fetch_array($getResults1, SQLSRV_FETCH_ASSOC)){
+    //   $jglat = $row1['lat'];
+    //   $jglng = $row1['lng'];
+    // }
+    // $seogu = "SELECT lat, lng FROM busan WHERE name='seogu'";
+    // $getResults2 = sqlsrv_query($conn,$seogu);
+    // while ($row2 = sqlsrv_fetch_array($getResults2, SQLSRV_FETCH_ASSOC)){
+    //   $sglat = $row2['lat'];
+    //   $sglng = $row2['lng'];
+    // }
+    // $donggu = "SELECT lat, lng FROM busan WHERE name='donggu'";
+    // $getResults3 = sqlsrv_query($conn,$donggu);
+    // while ($row3 = sqlsrv_fetch_array($getResults3, SQLSRV_FETCH_ASSOC)){
+    //   $dglat = $row3['lat'];
+    //   $dglng = $row3['lng'];
+    // }
+    // $youngdogu = "SELECT lat, lng FROM busan WHERE name='youngdogu'";
+    // $getResults4 = sqlsrv_query($conn,$youngdogu);
+    // while ($row4 = sqlsrv_fetch_array($getResults4, SQLSRV_FETCH_ASSOC)){
+    //   $ydglat = $row4['lat'];
+    //   $ydglng = $row4['lng'];
+    // }
+    // $jingu = "SELECT lat, lng FROM busan WHERE name='jingu'";
+    // $getResults5 = sqlsrv_query($conn,$jingu);
+    // while ($row5 = sqlsrv_fetch_array($getResults5, SQLSRV_FETCH_ASSOC)){
+    //   $jinglat = $row5['lat'];
+    //   $jinglng = $row5['lng'];
+    // }
     //sqlsrv_free_stst($stst);
-
     $lat = [];
     $lng = [];
 
@@ -72,8 +71,6 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
       $lat[] = $row6['lat'];
       $lng[] = $row6['lng'];
     }
-    echo $lat[0]."<br>";
-    echo $lat[1];
 
     // $row = 1;
     // $handle = fopen("busanmove1.csv", "r+");
@@ -8095,78 +8092,78 @@ var markerPosition  = [
     {//0
         title: '중구',
         content: '<div style="padding:5px;">중구 보건소<br><p>주소 : 부산광역시 중구 중구로 120(대청동1가)<br>설명 : 메리놀병원에서 50m 동남쪽중구청 별관<br>전화번호 : 051-600-4741</p></div>',
-        latlng: new kakao.maps.LatLng(<? echo $jglat ?> , <? echo $jglng ?>)
+        latlng: new kakao.maps.LatLng(<? echo $lat[0] ?> , <? echo $lng[0] ?>)
     },
     {//1
         title: '서구', 
         content: '<div style="padding:5px;">서구 보건소<br><p>주소 : 부산광역시 서구 부용로 30<br>설명 : 동대신동 지하철역에서 300m남서쪽 항서교회 앞<br>전화번호 : 051-242-4000</p></div>',
-        latlng: new kakao.maps.LatLng(<? echo $sglat ?> , <? echo $sglng ?>)
+        latlng: new kakao.maps.LatLng(<? echo $lat[1] ?> , <? echo $lng[1] ?>)
     },
     {//2
         title: '동구', 
         content: '<div style="padding:5px;">동구 보건소<br><p>주소 : 부산광역시 동구 구청로 1 (수정동)<br>설명 : 동래구청 바로 뒤<br>전화번호 : 051-440-6501</p></div>',
-        latlng: new kakao.maps.LatLng(<? echo $dglat ?> , <? echo $dglng ?>)
+        latlng: new kakao.maps.LatLng(<? echo $lat[2] ?> , <? echo $lng[2] ?>)
     },
     {//3
         title: '영도구', 
         content: '<div style="padding:5px;">영도구 보건소<br><p>주소 : 부산광역시 영도구 태종로 423(청학동)<br>설명 : 청학2동사무소에서 100m남동쪽 영도구청 별관<br>전화번호 : 051-419-4901</p></div>',
-        latlng: new kakao.maps.LatLng(<? echo $ydglat ?> , <? echo $ydglng ?>)
+        latlng: new kakao.maps.LatLng(<? echo $lat[3] ?> , <? echo $lng[3] ?>)
     },
     {//4
         title: '부산진구', 
         content: '<div style="padding:5px;">부산진구 보건소<br><p>주소 : 부산광역시 부산진구 황령대로8번길 36 (범천동)<br>설명 : 범내골 지하철역에서 2번 출구, 서영주유소 뒤<br>전화번호 : 051-645-4000</p></div>',
-        latlng: new kakao.maps.LatLng(<? echo $jinglat ?> , <? echo $jinglng ?>)
+        latlng: new kakao.maps.LatLng(<? echo $lat[4] ?> , <? echo $lng[4] ?>)
     },
     {//5
         title: '동래구', 
         content: '<div style="padding:5px;">동래구 보건소<br><p>주소 : 부산광역시 동래구 명륜로187번길 56 (명륜동)<br>설명 : 명륜동 지하철역 2번 출구 옆<br>전화번호 : 051-555-4000</p></div>',
-        latlng: new kakao.maps.LatLng(35.2113886, 129.0776738)
+        latlng: new kakao.maps.LatLng(<? echo $lat[5] ?> , <? echo $lng[5] ?>)
     },
     {//6
         title: '남구', 
         content: '<div style="padding:5px;">남구 보건소<br><p>주소 : 부산광역시 남구 못골로 23 (대연동)<br>설명 : 남구청에서 10m 동쪽 남구청 옆<br>전화번호 : 051-607-6460</p></div>',
-        latlng: new kakao.maps.LatLng(35.1360492, 129.0827931)
+        latlng: new kakao.maps.LatLng(<? echo $lat[6] ?> , <? echo $lng[6] ?>)
     },
     {//7
         title: '북구', 
         content: '<div style="padding:5px;">북구 보건소<br><p>주소 : 부산광역시 북구 금곡대로 348 (화명동)<br>설명 : 화신중학교 정문 맞은편<br>전화번호 : 051-309-4500</p></div>',
-        latlng: new kakao.maps.LatLng(35.2392452, 129.0125958)
+        latlng: new kakao.maps.LatLng(<? echo $lat[7] ?> , <? echo $lng[7] ?>)
     },
     {//8
         title: '해운대구',
         content: '<div style="padding:5px;">해운대구 보건소<br><p>주소 : 부산광역시 해운대구 양운로37번길 59 (좌동)<br>설명 : 해운대성심병원에서 400m북동쪽 현대아파트 앞<br>전화번호 : 051-746-4000</p></div>',
-        latlng: new kakao.maps.LatLng(35.1641183, 129.1764714)
+        latlng: new kakao.maps.LatLng(<? echo $lat[8] ?> , <? echo $lng[8] ?>)
     },
     {//9
         title: '사하구', 
         content: '<div style="padding:5px;">사하구 보건소<br><p>주소 : 부산광역시 사하구 하신번영로127번길 2 (신평동)<br>설명 : 신평 지하철역에서 200m남서쪽 신평스포츠공원 앞<br>전화번호 : 051-220-5701</p></div>',
-        latlng: new kakao.maps.LatLng(35.0940152, 128.9564904)
+        latlng: new kakao.maps.LatLng(<? echo $lat[9] ?> , <? echo $lng[9] ?>)
     },
     {//10
         title: '금정구', 
         content: '<div style="padding:5px;">금정구 보건소<br><p>주소 : 부산광역시 금정구 중앙대로 1777(부곡동)<br>설명 : 금정소방서에서 20m  남쪽 금정구청 옆<br>전화번호 : 051-519-5051</p></div>',
-        latlng: new kakao.maps.LatLng(35.2420519, 129.0902829)
+        latlng: new kakao.maps.LatLng(<? echo $lat[10] ?> , <? echo $lng[10] ?>)
     },
     {//11
         title: '강서구', 
         content: '<div style="padding:5px;">강서구 보건소<br><p>주소 : 부산광역시 강서구 공항로 811번길 10(대저2동)<br>설명 : 경전철 덕두역에서 동쪽방향(낙동강쪽) 300m 강서브라이트센터 내<br>전화번호 : 051-970-3415</p></div>',
-        latlng: new kakao.maps.LatLng(35.1804031, 128.9550841)
+        latlng: new kakao.maps.LatLng(<? echo $lat[11] ?> , <? echo $lng[11] ?>)
     },{//12
         title: '연제구', 
         content: '<div style="padding:5px;">연제구 보건소<br><p>주소 : 부산광역시 연제구 연제로 2 (연산동)<br>설명 : 연제구청 옆 (노동청 방향 도보로 5분)<br>전화번호 : 051-665-4781</p></div>',
-        latlng: new kakao.maps.LatLng(35.1768371, 129.0769526)
+        latlng: new kakao.maps.LatLng(<? echo $lat[12] ?> , <? echo $lng[12] ?>)
     },{//13
         title: '수영구', 
         content: '<div style="padding:5px;">수영구 보건소<br><p>주소 : 부산광역시 수영구 수영로 637-5(광안동)<br>설명 : 수영 지하철역 14번 출구에서 광안동 방향 500m<br>전화번호 : 051-752-4000</p></div>',
-        latlng: new kakao.maps.LatLng(35.1625706, 129.1113024)
+        latlng: new kakao.maps.LatLng(<? echo $lat[13] ?> , <? echo $lng[13] ?>)
     },{//14
         title: '사상구',
         content: '<div style="padding:5px;">사상구 보건소<br><p>주소 : 부산광역시 사상구 학감대로 242 (감전동)<br>설명 : 감전지하철역에서 구덕터널방향 300m<br>전화번호 : 051-310-4791</p></div>',
-        latlng: new kakao.maps.LatLng(35.1524214, 128.9898503)
+        latlng: new kakao.maps.LatLng(<? echo $lat[14] ?> , <? echo $lng[14] ?>)
     },{//15
         title: '기장군', 
         content: '<div style="padding:5px;">기장군 보건소<br><p>주소 : 부산광역시 기장군 기장읍 기장대로560<br>설명 : 기장군청 뒷편<br>전화번호 : 051-709-4791</p></div>',
-        latlng: new kakao.maps.LatLng(35.2435267, 129.2207769)
+        latlng: new kakao.maps.LatLng(<? echo $lat[15] ?> , <? echo $lng[15] ?>)
     }
 ];
 </script>
