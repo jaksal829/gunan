@@ -67,7 +67,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
     $lng = [];
 
     $sql = "SELECT lat, lng FROM busan";
-    $getResults6 = sqlsrv_query($conn,$jingu);
+    $getResults6 = sqlsrv_query($conn,$sql);
     while ($row6 = sqlsrv_fetch_array($getResults6, SQLSRV_FETCH_ASSOC)){
       $lat[] = $row6['lat'];
       $lng[] = $row6['lng'];
