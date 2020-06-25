@@ -31,7 +31,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
         //echo "$sql<br />";
     }
     fclose($handle);
-    
+
     $lat = [];
     $lng = [];
 
@@ -60,9 +60,22 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
         }
         $sql .= ");";
         $getResults = sqlsrv_query($conn,$sql);
-        echo "$sql<br />";
+        // echo "$sql<br />";
     }
     fclose($handle);
+
+    $lat1 = [];
+    $lng1 = [];
+    $period = [];
+    $sql = "SELECT lat, lng, period FROM busanmove1";
+    $getResults2 = sqlsrv_query($conn,$sql);
+    while ($row2 = sqlsrv_fetch_array($getResults2, SQLSRV_FETCH_ASSOC)){
+      $lat1[] = $row2['lat'];
+      $lng1[] = $row2['lng'];
+      $period[] = $row2['period'];
+    }
+    echo $lat1[0].", ".$lng1[0].", ".$period[0]."<br>";
+    echo $lat1[1].", ".$lng1[1].", ".$period[1];
 
     sqlsrv_close($conn);
 ?>
