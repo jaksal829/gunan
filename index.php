@@ -62,6 +62,43 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
       $jinglng = $row5['lng'];
     }
     //sqlsrv_free_stst($stst);
+
+    $lat = [];
+    $lng = [];
+
+    $sql = "SELECT lat, lng FROM busan";
+    $getResults6 = sqlsrv_query($conn,$jingu);
+    while ($row6 = sqlsrv_fetch_array($getResults6, SQLSRV_FETCH_ASSOC)){
+      $lat[] = $row6['lat'];
+      $lng[] = $row6['lng'];
+    }
+    echo $lat[0]."<br>\n";
+    echo $lat[1];
+
+    $row = 1;
+    $handle = fopen("busanmove1.csv", "r+");
+    //$sql = "INSERT INTO latlng VALUES ('".$data[0]."','".$data[1]."');";
+    while (($data = fgetcsv($handle, 1000, ",")) !== false) {
+        $num = count($data);
+
+        $row++;
+
+        $sql = "INSERT INTO busanmove1 VALUES (";
+
+        for ($c=0; $c < $num; $c++) {
+            $sql .= "'" . $data[$c] . "'";
+            if($c+1 !== $num){
+                $sql .= ", ";
+            }
+        }
+        $sql .= ");";
+        $getResults = sqlsrv_query($conn,$sql);
+        //echo "$sql<br />";
+    }
+    fclose($handle); 
+    $
+
+
     sqlsrv_close($conn);
 ?>
 <!DOCTYPE html>
