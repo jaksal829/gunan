@@ -31,70 +31,38 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
         //echo "$sql<br />";
     }
     fclose($handle);
-    // $junggu = "SELECT lat, lng FROM busan WHERE name='junggu'";
-    // $getResults1 = sqlsrv_query($conn,$junggu);
-    // while ($row1 = sqlsrv_fetch_array($getResults1, SQLSRV_FETCH_ASSOC)){
-    //   $jglat = $row1['lat'];
-    //   $jglng = $row1['lng'];
-    // }
-    // $seogu = "SELECT lat, lng FROM busan WHERE name='seogu'";
-    // $getResults2 = sqlsrv_query($conn,$seogu);
-    // while ($row2 = sqlsrv_fetch_array($getResults2, SQLSRV_FETCH_ASSOC)){
-    //   $sglat = $row2['lat'];
-    //   $sglng = $row2['lng'];
-    // }
-    // $donggu = "SELECT lat, lng FROM busan WHERE name='donggu'";
-    // $getResults3 = sqlsrv_query($conn,$donggu);
-    // while ($row3 = sqlsrv_fetch_array($getResults3, SQLSRV_FETCH_ASSOC)){
-    //   $dglat = $row3['lat'];
-    //   $dglng = $row3['lng'];
-    // }
-    // $youngdogu = "SELECT lat, lng FROM busan WHERE name='youngdogu'";
-    // $getResults4 = sqlsrv_query($conn,$youngdogu);
-    // while ($row4 = sqlsrv_fetch_array($getResults4, SQLSRV_FETCH_ASSOC)){
-    //   $ydglat = $row4['lat'];
-    //   $ydglng = $row4['lng'];
-    // }
-    // $jingu = "SELECT lat, lng FROM busan WHERE name='jingu'";
-    // $getResults5 = sqlsrv_query($conn,$jingu);
-    // while ($row5 = sqlsrv_fetch_array($getResults5, SQLSRV_FETCH_ASSOC)){
-    //   $jinglat = $row5['lat'];
-    //   $jinglng = $row5['lng'];
-    // }
-    //sqlsrv_free_stst($stst);
+    
     $lat = [];
     $lng = [];
 
     $sql = "SELECT lat, lng FROM busan";
-    $getResults6 = sqlsrv_query($conn,$sql);
-    while ($row6 = sqlsrv_fetch_array($getResults6, SQLSRV_FETCH_ASSOC)){
-      $lat[] = $row6['lat'];
-      $lng[] = $row6['lng'];
+    $getResults1 = sqlsrv_query($conn,$sql);
+    while ($row1 = sqlsrv_fetch_array($getResults1, SQLSRV_FETCH_ASSOC)){
+      $lat[] = $row1['lat'];
+      $lng[] = $row1['lng'];
     }
 
-    // $row = 1;
-    // $handle = fopen("busanmove1.csv", "r+");
-    // //$sql = "INSERT INTO latlng VALUES ('".$data[0]."','".$data[1]."');";
-    // while (($data = fgetcsv($handle, 1000, ",")) !== false) {
-    //     $num = count($data);
+    $row = 1;
+    $handle = fopen("busanmove1.csv", "r+");
+    //$sql = "INSERT INTO latlng VALUES ('".$data[0]."','".$data[1]."');";
+    while (($data1 = fgetcsv($handle, 1000, ",")) !== false) {
+        $num = count($data1);
 
-    //     $row++;
+        $row++;
 
-    //     $sql = "INSERT INTO busanmove1 VALUES (";
+        $sql = "INSERT INTO busanmove1 VALUES (";
 
-    //     for ($c=0; $c < $num; $c++) {
-    //         $sql .= "'" . $data[$c] . "'";
-    //         if($c+1 !== $num){
-    //             $sql .= ", ";
-    //         }
-    //     }
-    //     $sql .= ");";
-    //     $getResults = sqlsrv_query($conn,$sql);
-    //     //echo "$sql<br />";
-    // }
-    // fclose($handle); 
-    // $
-
+        for ($c=0; $c < $num; $c++) {
+            $sql .= "'" . $data1[$c] . "'";
+            if($c+1 !== $num){
+                $sql .= ", ";
+            }
+        }
+        $sql .= ");";
+        $getResults = sqlsrv_query($conn,$sql);
+        echo "$sql<br />";
+    }
+    fclose($handle);
 
     sqlsrv_close($conn);
 ?>
