@@ -75,7 +75,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
     }
     // echo $lat1[0].", ".$lng1[0].", ".$period[0]."<br>";
     // echo $lat1[1].", ".$lng1[1].", ".$period[1];
-
+    echo count($lat);
     sqlsrv_close($conn);
 ?>
 <!DOCTYPE html>
@@ -8279,7 +8279,7 @@ function displayArea(area) {
         //   kakao.maps.event.addListener(marker2, 'click', makerClick(map,marker2,infowindow2));
         // }
         
-     <? } ?>
+      } 
     });
 }
 function setPolygons(map) {
