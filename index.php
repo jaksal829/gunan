@@ -8166,7 +8166,7 @@ var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 
 var polygons = [];
 var markers = [];
-// var markers2 = [];
+var markers2 = [];
 //map.setDraggable(false);
 //map.setZoomable(false);
 // 지도에 영역데이터를 폴리곤으로 표시합니다 
@@ -8266,18 +8266,18 @@ function displayArea(area) {
         kakao.maps.event.addListener(marker, 'click', makerClick(map,marker,infowindow));
       }
       
-      // for(var mk2 = 0; mk2 < 8;mk2 ++){
-      //   var marker2 = new kakao.maps.Marker({
-      //     map: map,
-      //     position: new kakao.maps.LatLng(<? echo $lat[mk2]; ?>,<? echo $lng[mk2]; ?>),
-      //     image: markerImage
-      //   })
-      //  // markers2.push(marker2)
-      //   if(<? echo $period[mk2]; ?> < 14){
-      //     var infowindow2 = new kakao.maps.InfoWindow({content : '<div style="padding:5px;">위치 : <br><p>기간 : <? echo $period[mk2]; ?></p></div>'});
-      //     kakao.maps.event.addListener(marker2, 'click', makerClick(map,marker2,infowindow2));
-      //   }
-      // }
+      for(var mk2 = 0; mk2 < 8;mk2 ++){
+        var marker2 = new kakao.maps.Marker({
+          map: map,
+          position: new kakao.maps.LatLng(<? echo $lat[mk2]; ?>,<? echo $lng[mk2]; ?>),
+          image: markerImage
+        })
+        markers2.push(marker2)
+        // if(<? echo $period[mk2]; ?> < 14){
+        //   var infowindow2 = new kakao.maps.InfoWindow({content : '<div style="padding:5px;">위치 : <br><p>기간 : <? echo $period[mk2]; ?></p></div>'});
+        //   kakao.maps.event.addListener(marker2, 'click', makerClick(map,marker2,infowindow2));
+        // }
+      }
     });
 }
 function setPolygons(map) {
@@ -8289,9 +8289,9 @@ function setMarker(map) {
   for (var i = 0; i < markers.length; i++){
     markers[i].setMap(map);
   }
-  // for(var j = 0; j < markers2.length; j++){
-  //   markers2[j].setMap(map);
-  // }
+  for(var j = 0; j < markers2.length; j++){
+    markers2[j].setMap(map);
+  }
 }
 function showPolygons() {
   map.setCenter(new kakao.maps.LatLng(36.189320, 128.003166));
