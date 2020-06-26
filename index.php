@@ -63,7 +63,6 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
         // echo "$sql<br />";
     }
     fclose($handle);
-    $cnt = 0;
     $lat1 = [];
     $lng1 = [];
     $period = [];
@@ -73,7 +72,6 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
       $lat1[] = $row2['lat'];
       $lng1[] = $row2['lng'];
       $period[] = $row2['period'];
-      $cnt += 1;
     }
     // echo $lat1[0].", ".$lng1[0].", ".$period[0]."<br>";
     // echo $lat1[1].", ".$lng1[1].", ".$period[1];
@@ -8291,7 +8289,7 @@ function setMarker(map) {
   for (var i = 0; i < markers.length; i++){
     markers[i].setMap(map);
   }
-  for(var j = 0; j < marker2s.length; j++){
+  for(var j = 0; j < markers2.length; j++){
     markers2[j].setMap(map);
   }
 }
