@@ -8156,8 +8156,7 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     };
 // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 var map = new kakao.maps.Map(mapContainer, mapOption),
-    customOverlay = new kakao.maps.CustomOverlay({}),
-    marker2 = new kakao.maps.Marker();
+    customOverlay = new kakao.maps.CustomOverlay({});
 var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
 // 마커 이미지의 이미지 크기 입니다
 var imageSize = new kakao.maps.Size(24, 35); 
@@ -8267,19 +8266,20 @@ function displayArea(area) {
         kakao.maps.event.addListener(marker, 'click', makerClick(map,marker,infowindow));
       }
       
-      for(mk2 = 0; mk2 < <? echo count($lat); ?>;mk2 ++){
-        marker2 = new kakao.maps.Marker({
+      for(var mk2 = 0; mk2 < <? echo count($lat); ?>;mk2 ++){
+        <? $cnt = ?> mk2; <? ; ?>
+        var marker2 = new kakao.maps.Marker({
           map: map,
-          position: new kakao.maps.LatLng(<? echo $lat[$mk2]; ?>,<? echo $lng[$mk2]; ?>),
+          position: new kakao.maps.LatLng(<? echo $lat[$cnt]; ?>,<? echo $lng[$cnt]; ?>),
           image: markerImage
         })
         markers2.push(marker);
-        // if(<? echo $period[$mk2]; ?> < 14){
-        //   var infowindow2 = new kakao.maps.InfoWindow({content : '<div style="padding:5px;">위치 : <br><p>기간 : <? echo $period[$mk2]; ?></p></div>'});
+        // if(<? echo $period[$cnt]; ?> < 14){
+        //   var infowindow2 = new kakao.maps.InfoWindow({content : '<div style="padding:5px;">위치 : <br><p>기간 : <? echo $period[$cnt]; ?></p></div>'});
         //   kakao.maps.event.addListener(marker2, 'click', makerClick(map,marker2,infowindow2));
         // }
         
-      }
+      } 
     });
 }
 function setPolygons(map) {
