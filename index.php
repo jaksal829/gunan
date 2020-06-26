@@ -8265,8 +8265,9 @@ function displayArea(area) {
         var infowindow = new kakao.maps.InfoWindow({content : markerPosition[mk].content, removable : true , zindex : 1});
         kakao.maps.event.addListener(marker, 'click', makerClick(map,marker,infowindow));
       }
-      
+      <?
       for(var mk2 = 0; mk2 < 8;mk2 ++){
+        ?>
         var marker2 = new kakao.maps.Marker({
           map: map,
           position: new kakao.maps.LatLng(<? echo $lat[mk2]; ?>,<? echo $lng[mk2]; ?>),
@@ -8277,7 +8278,8 @@ function displayArea(area) {
         //   var infowindow2 = new kakao.maps.InfoWindow({content : '<div style="padding:5px;">위치 : <br><p>기간 : <? echo $period[mk2]; ?></p></div>'});
         //   kakao.maps.event.addListener(marker2, 'click', makerClick(map,marker2,infowindow2));
         // }
-      }
+        
+     <? } ?>
     });
 }
 function setPolygons(map) {
