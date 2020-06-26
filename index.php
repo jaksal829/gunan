@@ -8274,10 +8274,10 @@ function displayArea(area) {
           image: markerImage
         })
         markers2.push(marker2);
-        // if(<? echo $period[$mk2]; ?> < 14){
-        //   var infowindow2 = new kakao.maps.InfoWindow({content : '<div style="padding:5px;">위치 : <br><p>기간 : <? echo $period[$mk2]; ?></p></div>'});
-        //   kakao.maps.event.addListener(marker2, 'click', makerClick(map,marker2,infowindow2));
-        // }
+        if(<? echo $period[$mk2]; ?> < 14){
+          var infowindow2 = new kakao.maps.InfoWindow({content : '<div style="padding:5px;">위치 : <br><p>기간 : <? echo $period[$mk2]; ?></p></div>'});
+          kakao.maps.event.addListener(marker2, 'click', makerClick(map,marker2,infowindow2));
+        }
         
       <?}?> 
     });
