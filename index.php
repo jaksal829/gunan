@@ -75,8 +75,8 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
       $period[] = $row2['period'];
       $cnt += 1;
     }
-    echo $lat1[0].", ".$lng1[0].", ".$period[0]."<br>";
-    echo $lat1[1].", ".$lng1[1].", ".$period[1];
+    // echo $lat1[0].", ".$lng1[0].", ".$period[0]."<br>";
+    // echo $lat1[1].", ".$lng1[1].", ".$period[1];
 
     sqlsrv_close($conn);
 ?>
