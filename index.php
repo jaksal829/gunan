@@ -8261,19 +8261,19 @@ function displayArea(area) {
             title : markerPosition[mk].title,
             position: markerPosition[mk].latlng // 마커를 표시할 위치
         });
-        markers.push(marker)
+        markers.push(marker);
         var infowindow = new kakao.maps.InfoWindow({content : markerPosition[mk].content, removable : true , zindex : 1});
         kakao.maps.event.addListener(marker, 'click', makerClick(map,marker,infowindow));
       }
       <?
       for($mk2 = 0; $mk2 < count($lat);$mk2 ++){
         ?>
-        var marker = new kakao.maps.Marker({
+        var marker2 = new kakao.maps.Marker({
           map: map,
           position: new kakao.maps.LatLng(<? echo $lat[$mk2]; ?>,<? echo $lng[$mk2]; ?>),
           image: markerImage
         })
-        markers2.push(marker)
+        markers2.push(marker);
         // if(<? echo $period[$mk2]; ?> < 14){
         //   var infowindow2 = new kakao.maps.InfoWindow({content : '<div style="padding:5px;">위치 : <br><p>기간 : <? echo $period[$mk2]; ?></p></div>'});
         //   kakao.maps.event.addListener(marker2, 'click', makerClick(map,marker2,infowindow2));
