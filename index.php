@@ -8269,12 +8269,12 @@ function displayArea(area) {
       for(var mk2 = 0; mk2 < <? echo count($lat); ?>;mk2 ++){
         var marker2 = new kakao.maps.Marker({
           map: map,
-          position: new kakao.maps.LatLng(<? echo $lat[mk2] ?>,<? echo $lng[mk2] ?>),
+          position: new kakao.maps.LatLng(<? echo $lat[mk2]; ?>,<? echo $lng[mk2]; ?>),
           image: markerImage
         })
         markers2.push(marker2)
-        if(<? echo $period[mk2] ?> < 14){
-          var infowindow2 = new kakao.maps.InfoWindow({content : '<div style="padding:5px;">위치 : <br><p>기간 : <? echo $period[mk2] ?></p></div>'});
+        if(<? echo $period[mk2]; ?> < 14){
+          var infowindow2 = new kakao.maps.InfoWindow({content : '<div style="padding:5px;">위치 : <br><p>기간 : <? echo $period[mk2]; ?></p></div>'});
           kakao.maps.event.addListener(marker2, 'click', makerClick(map,marker2,infowindow2));
         }
       }
