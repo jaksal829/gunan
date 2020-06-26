@@ -8266,11 +8266,11 @@ function displayArea(area) {
         kakao.maps.event.addListener(marker, 'click', makerClick(map,marker,infowindow));
       }
       <?
-      for($mk2 = 0; $mk2 < count($lat); $mk2 ++){
+      for($mk2 = 0; $mk2 < count($lat1); $mk2 ++){
         ?>
         var marker2 = new kakao.maps.Marker({
           map: map,
-          position: new kakao.maps.LatLng(<? echo $lat[$mk2]; ?>,<? echo $lng[$mk2]; ?>),
+          position: new kakao.maps.LatLng(<? echo $lat1[$mk2]; ?>,<? echo $lng1[$mk2]; ?>),
           image: markerImage
         })
         markers2.push(marker2);
