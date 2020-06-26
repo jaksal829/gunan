@@ -8266,7 +8266,7 @@ function displayArea(area) {
         kakao.maps.event.addListener(marker, 'click', makerClick(map,marker,infowindow));
       }
       <?
-      for($mk2 = 0; $mk2 < 8;$mk2 ++){
+      for($mk2 = 0; $mk2 < count($lat);$mk2 ++){
         ?>
         var marker2 = new kakao.maps.Marker({
           map: map,
