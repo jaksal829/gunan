@@ -63,7 +63,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
         // echo "$sql<br />";
     }
     fclose($handle);
-
+    $cnt = 0;
     $lat1 = [];
     $lng1 = [];
     $period = [];
@@ -73,6 +73,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
       $lat1[] = $row2['lat'];
       $lng1[] = $row2['lng'];
       $period[] = $row2['period'];
+      $cnt += 1;
     }
     echo $lat1[0].", ".$lng1[0].", ".$period[0]."<br>";
     echo $lat1[1].", ".$lng1[1].", ".$period[1];
@@ -8158,7 +8159,12 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 var map = new kakao.maps.Map(mapContainer, mapOption),
     customOverlay = new kakao.maps.CustomOverlay({});
-
+var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+// 마커 이미지의 이미지 크기 입니다
+var imageSize = new kakao.maps.Size(24, 35); 
+      
+// 마커 이미지를 생성합니다    
+var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
 
 var polygons = [];
 //map.setDraggable(false);
@@ -8256,25 +8262,20 @@ function displayArea(area) {
             position: markerPosition[mk].latlng // 마커를 표시할 위치
         });
         var infowindow = new kakao.maps.InfoWindow({content : markerPosition[mk].content, removable : true , zindex : 1});
-        kakao.maps.event.addListener(marker, 'click', makeClick(map,marker,infowindow));
+        kakao.maps.event.addListener(marker, 'click', makerClick(map,marker,infowindow));
       }
-      var linePath = [
-          new kakao.maps.LatLng(35.088197, 129.018662),
-          new kakao.maps.LatLng(35.114518, 129.015275),
-          new kakao.maps.LatLng(35.126454, 129.047057) 
-      ];
-
-      // 지도에 표시할 선을 생성합니다
-      var polyline = new kakao.maps.Polyline({
-          path: linePath, // 선을 구성하는 좌표배열 입니다
-          strokeWeight: 5, // 선의 두께 입니다
-          strokeColor: 'red', // 선의 색깔입니다
-          strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-          strokeStyle: 'solid' // 선의 스타일입니다
-      });
-
-      // 지도에 선을 표시합니다 
-      polyline.setMap(map);  
+      
+      for(var mk2 = 0; mk2 < <? echo count($lat); ?>;mk2 ++){
+        var marker2 = new kakao.maps.Marker({
+          map: map,
+          position: new kakao.maps.LatLng(<? echo $lat[mk2] ?>,<? echo $lng[mk2] ?>),
+          image: markerImage
+        })
+        if(<? echo $period ?> < 14){
+          var infowindow2 = new kakao.maps.InfoWindow({content : '<div style="padding:5px;">위치 : <br><p>기간 : <? echo $period ?></p></div>'});
+          kakao.maps.event.addListener(marker, 'click', makerClick(map,marker2,infowindow2));
+        }
+      }
     });
 }
 function setPolygons(map) {
@@ -8282,12 +8283,21 @@ function setPolygons(map) {
     polygons[i].setMap(map);
   }            
 }
+function setMarker(map) {
+  for (var i = 0; i < marker.length; i++){
+    marker[i].setMap(map);
+  }
+  for(var j = 0; j < marker2.length; j++){
+    marker2[j].setMap(map);
+  }
+}
 function showPolygons() {
   map.setCenter(new kakao.maps.LatLng(36.189320, 128.003166));
   map.setLevel(13);
   setPolygons(map);
+  setMarker(null);
 }
-function makeClick(map, marker, infowindow) {
+function makerClick(map, marker, infowindow) {
     return function() {
         infowindow.open(map,marker);
     };
