@@ -8167,6 +8167,8 @@ var imageSize = new kakao.maps.Size(24, 35);
 var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
 
 var polygons = [];
+var markers = [];
+var markers2 = [];
 //map.setDraggable(false);
 //map.setZoomable(false);
 // 지도에 영역데이터를 폴리곤으로 표시합니다 
@@ -8261,6 +8263,7 @@ function displayArea(area) {
             title : markerPosition[mk].title,
             position: markerPosition[mk].latlng // 마커를 표시할 위치
         });
+        markers.push(marker)
         var infowindow = new kakao.maps.InfoWindow({content : markerPosition[mk].content, removable : true , zindex : 1});
         kakao.maps.event.addListener(marker, 'click', makerClick(map,marker,infowindow));
       }
@@ -8271,6 +8274,7 @@ function displayArea(area) {
           position: new kakao.maps.LatLng(<? echo $lat[mk2] ?>,<? echo $lng[mk2] ?>),
           image: markerImage
         })
+        markers2.push(marker2)
         if(<? echo $period ?> < 14){
           var infowindow2 = new kakao.maps.InfoWindow({content : '<div style="padding:5px;">위치 : <br><p>기간 : <? echo $period ?></p></div>'});
           kakao.maps.event.addListener(marker, 'click', makerClick(map,marker2,infowindow2));
@@ -8284,11 +8288,11 @@ function setPolygons(map) {
   }            
 }
 function setMarker(map) {
-  for (var i = 0; i < marker.length; i++){
-    marker[i].setMap(map);
+  for (var i = 0; i < markers.length; i++){
+    markers[i].setMap(map);
   }
-  for(var j = 0; j < marker2.length; j++){
-    marker2[j].setMap(map);
+  for(var j = 0; j < marker2s.length; j++){
+    markers2[j].setMap(map);
   }
 }
 function showPolygons() {
