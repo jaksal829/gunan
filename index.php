@@ -1,5 +1,5 @@
 <?php
-header('Content-Type: text/html; charset=utf-8');
+//header('Content-Type: text/html; charset=utf-8');
 $connectionInfo = array("UID" => "gunan", "pwd" => "app2020!", "Database" => "covid", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
 $serverName = "tcp:gunan.database.windows.net,1433";
 $conn = sqlsrv_connect($serverName, $connectionInfo);
