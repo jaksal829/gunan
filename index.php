@@ -88,7 +88,6 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
     <style>
       body{
         margin: 0;
