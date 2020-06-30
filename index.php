@@ -218,7 +218,11 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
       </div>
     </div>
       <p>
-        <button onclick="showPolygons()">원점</button>
+        <button onclick="showPolygons()">처음화면으로</button>
+        <button onclick="deleteMarker1()">보건소 지우기</button>
+        <button onclick="showMarker1()">보건소 나타내기</button>
+        <button onclick="deleteMarker2()">확진자 동선 지우기</button>
+        <button onclick="showMarker2()">확진자 동선 나타내기</button>
       </p> 
   </ul>
   <ul class="cmap">
@@ -8293,10 +8297,12 @@ function setPolygons(map) {
     polygons[i].setMap(map);
   }            
 }
-function setMarker(map) {
+function setMarker1(map) {
   for (var i = 0; i < markers.length; i++){
     markers[i].setMap(map);
   }
+}
+function setMarker2(map) {
   for(var j = 0; j < markers2.length; j++){
     markers2[j].setMap(map);
   }
@@ -8305,7 +8311,20 @@ function showPolygons() {
   map.setCenter(new kakao.maps.LatLng(36.189320, 128.003166));
   map.setLevel(13);
   setPolygons(map);
-  setMarker(null);
+  setMarker1(null);
+  setMarker2(null)
+}
+function showMarker1(){
+  setMarker1(map);
+}
+function showMarker2(){
+  setMarker2(map);
+}
+function deleterMarker1(){
+  setMarker1(null);
+}
+function deleterMarker2(){
+  setMarker2(null);
 }
 function makerClick(map, marker, infowindow) {
     return function() {
