@@ -1,5 +1,5 @@
 <?php
-//header('Content-Type: text/html; charset=utf-8');
+header('Content-Type: text/html; charset=utf-8');
 $connectionInfo = array("UID" => "gunan", "pwd" => "app2020!", "Database" => "covid", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
 $serverName = "tcp:gunan.database.windows.net,1433";
 $conn = sqlsrv_connect($serverName, $connectionInfo);
@@ -221,10 +221,8 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
     </div>
       <p>
         <button onclick="showPolygons()">처음화면으로</button>
-        <button onclick="deleteMarker1()">보건소 지우기</button>
-        <button onclick="showMarker1()">보건소 나타내기</button>
-        <button onclick="deleteMarker2()">확진자 동선 지우기</button>
-        <button onclick="showMarker2()">확진자 동선 나타내기</button>
+        <button onclick="showMarker1()">보건소만 보기</button>
+        <button onclick="showMarker2()">확진자 동선만 보기</button>
       </p> 
   </ul>
   <ul class="cmap">
@@ -8317,16 +8315,14 @@ function showPolygons() {
   setMarker2(null)
 }
 function showMarker1() {
+  setPolygons(null);
   setMarker1(map);
+  setMarker2(null);
 }
 function showMarker2() {
-  setMarker2(map);
-}
-function deleterMarker1() {
+  setPolygons(null);
   setMarker1(null);
-}
-function deleterMarker2() {
-  setMarker2(null);
+  setMarker2(map);
 }
 function makerClick(map, marker, infowindow) {
     return function() {
