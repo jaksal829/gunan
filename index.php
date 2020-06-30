@@ -42,7 +42,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
     }
 
     $sql = "DROP TABLE busanmove1;";
-    $sql .= "CREATE TABLE busanmove1(num int primary key, lat nvarchar(50), lng nvarchar(50), adr nvarchar(100), date1 varchar(50), sysdate varchar(50), period int);"
+    $sql .= "CREATE TABLE busanmove1(num int primary key, lat nvarchar(50), lng nvarchar(50), adr nvarchar(100), date1 varchar(50), sysdate varchar(50), period int);";
     $getResults = sqlsrv_query($conn,$sql);
 
     $row = 1;
