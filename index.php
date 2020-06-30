@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/html; charset=utf-8');
 $connectionInfo = array("UID" => "gunan", "pwd" => "app2020!", "Database" => "covid", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
 $serverName = "tcp:gunan.database.windows.net,1433";
 $conn = sqlsrv_connect($serverName, $connectionInfo);
@@ -41,10 +42,10 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
       $lng[] = $row1['lng'];
     }
 
-    $sql = "DROP TABLE busanmove1;";
-    $getResults = sqlsrv_query($conn,$sql);
-    $sql = "CREATE TABLE busanmove1(num int primary key, lat nvarchar(50), lng nvarchar(50), adr nvarchar(100), date1 varchar(50), sysdate1 varchar(50), period1 int);";
-    $getResults = sqlsrv_query($conn,$sql);
+    // $sql = "DROP TABLE busanmove1;";
+    // $getResults = sqlsrv_query($conn,$sql);
+    // $sql = "CREATE TABLE busanmove1(num int primary key, lat nvarchar(50) not null, lng nvarchar(50) not null, adr nvarchar(100), date1 varchar(50), sysdate1 varchar(50), period1 int);";
+    // $getResults = sqlsrv_query($conn,$sql);
 
     $row = 1;
     $handle = fopen("busanmove1.csv", "r+");
@@ -76,8 +77,8 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
       $lng1[] = $row2['lng'];
       $period1[] = $row2['period1'];
     }
-    // echo $lat1[0].", ".$lng1[0].", ".$period[0]."<br>";
-    // echo $lat1[1].", ".$lng1[1].", ".$period[1];
+    // echo $lat1[0].", ".$lng1[0].", ".$period1[0]."<br>";
+    // echo $lat1[1].", ".$lng1[1].", ".$period1[1];
     echo count($lat);
     sqlsrv_close($conn);
 ?>
@@ -8271,7 +8272,7 @@ function displayArea(area) {
       <?
       for($mk2 = 0; $mk2 < count($lat1); $mk2 ++){
         ?>
-        if(<? echo $period[$mk2]; ?> < 14){
+        if(<? echo $period1[$mk2]; ?> < 14){
           var marker2 = new kakao.maps.Marker({
             map: map,
             position: new kakao.maps.LatLng(<? echo $lat1[$mk2]; ?>,<? echo $lng1[$mk2]; ?>),
@@ -8279,7 +8280,7 @@ function displayArea(area) {
           })
           markers2.push(marker2);
 
-          var infowindow2 = new kakao.maps.InfoWindow({content : '<div style="padding:5px;">위치 : <br><p>기간 : <? echo $period[$mk2]; ?>일 경과</p></div>', removable : true , zindex : 1});
+          var infowindow2 = new kakao.maps.InfoWindow({content : '<div style="padding:5px;">위치 : <br><p>기간 : <? echo $period1[$mk2]; ?>일 경과</p></div>', removable : true , zindex : 1});
           kakao.maps.event.addListener(marker2, 'click', makerClick(map,marker2,infowindow2));
         }
         
