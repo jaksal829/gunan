@@ -42,10 +42,12 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
       $lng[] = $row1['lng'];
     }
 
-    // $sql = "DROP TABLE busanmove;";
-    // $getResults = sqlsrv_query($conn,$sql);
-    // $sql = "CREATE TABLE busanmove(num int primary key, lat varchar(50) not null, lng varchar(50) not null, adr nvarchar(100), date1 varchar(50), sysdate1 varchar(50), period1 int);";
-    // $getResults = sqlsrv_query($conn,$sql);
+    $dp = "DROP TABLE busanmove;";
+    $getResults = sqlsrv_query($conn,$dp);
+    $ct = "CREATE TABLE busanmove ( ";
+    $ct .= "num int primary key not null, lat varchar(50) not null, lng varchar(50) not null, ";
+    $ct .= "adr nvarchar(100), date1 varchar(50), sysdate1 varchar(50), period1 int );";
+    $getResults = sqlsrv_query($conn,$ct);
 
     $row = 1;
     $handle = fopen("busanmove1.csv", "r+");
@@ -79,7 +81,6 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
     }
     // echo $lat1[0].", ".$lng1[0].", ".$period1[0]."<br>";
     // echo $lat1[1].", ".$lng1[1].", ".$period1[1];
-    echo count($lat);
     sqlsrv_close($conn);
 ?>
 <!DOCTYPE html>
