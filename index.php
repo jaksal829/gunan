@@ -12,7 +12,6 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
 
     $row = 1;
     $handle = fopen("busan.csv", "r+");
-    //$sql = "INSERT INTO latlng VALUES ('".$data[0]."','".$data[1]."');";
     while (($data = fgetcsv($handle, 1000, ",")) !== false) {
         $num = count($data);
 
@@ -42,9 +41,12 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
       $lng[] = $row1['lng'];
     }
 
+    $sql = "DROP TABLE busanmove1;";
+    $sql .= "CREATE TABLE busanmove1(num int primary key, lat nvarchar(50), lng nvarchar(50), adr nvarchar(100), date1 varchar(50), sysdate varchar(50), period int);"
+    $getResults = sqlsrv_query($conn,$sql);
+
     $row = 1;
     $handle = fopen("busanmove1.csv", "r+");
-    //$sql = "INSERT INTO latlng VALUES ('".$data[0]."','".$data[1]."');";
     while (($data1 = fgetcsv($handle, 1000, ",")) !== false) {
         $num = count($data1);
 
@@ -8276,7 +8278,7 @@ function displayArea(area) {
           })
           markers2.push(marker2);
 
-          var infowindow2 = new kakao.maps.InfoWindow({content : '<div style="padding:5px;">위치 : <br><p>기간 : <? echo $period[$mk2]; ?></p></div>', removable : true , zindex : 1});
+          var infowindow2 = new kakao.maps.InfoWindow({content : '<div style="padding:5px;">위치 : <br><p>기간 : <? echo $period[$mk2]; ?>일 경과</p></div>', removable : true , zindex : 1});
           kakao.maps.event.addListener(marker2, 'click', makerClick(map,marker2,infowindow2));
         }
         
