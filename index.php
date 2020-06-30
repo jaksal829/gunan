@@ -1,5 +1,5 @@
 <?php
-header('Content-Type: text/html; charset=utf-8');
+//header('Content-Type: text/html; charset=utf-8');
 $connectionInfo = array("UID" => "gunan", "pwd" => "app2020!", "Database" => "covid", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
 $serverName = "tcp:gunan.database.windows.net,1433";
 $conn = sqlsrv_connect($serverName, $connectionInfo);
@@ -42,9 +42,9 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
       $lng[] = $row1['lng'];
     }
 
-    // $sql = "DROP TABLE busanmove1;";
+    // $sql = "DROP TABLE busanmove;";
     // $getResults = sqlsrv_query($conn,$sql);
-    // $sql = "CREATE TABLE busanmove1(num int primary key, lat nvarchar(50) not null, lng nvarchar(50) not null, adr nvarchar(100), date1 varchar(50), sysdate1 varchar(50), period1 int);";
+    // $sql = "CREATE TABLE busanmove(num int primary key, lat varchar(50) not null, lng varchar(50) not null, adr nvarchar(100), date1 varchar(50), sysdate1 varchar(50), period1 int);";
     // $getResults = sqlsrv_query($conn,$sql);
 
     $row = 1;
@@ -54,7 +54,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
 
         $row++;
 
-        $sql = "INSERT INTO busanmove1 VALUES (";
+        $sql = "INSERT INTO busanmove VALUES (";
 
         for ($c=0; $c < $num; $c++) {
             $sql .= "'" . $data1[$c] . "'";
@@ -70,7 +70,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
     $lat1 = [];
     $lng1 = [];
     $period1 = [];
-    $sql = "SELECT lat, lng, period1 FROM busanmove1";
+    $sql = "SELECT lat, lng, period1 FROM busanmove";
     $getResults2 = sqlsrv_query($conn,$sql);
     while ($row2 = sqlsrv_fetch_array($getResults2, SQLSRV_FETCH_ASSOC)){
       $lat1[] = $row2['lat'];
