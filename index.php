@@ -72,12 +72,14 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
     $lat1 = [];
     $lng1 = [];
     $period1 = [];
-    $sql = "SELECT lat, lng, period1 FROM busanmove";
+    $adr = [];
+    $sql = "SELECT lat, lng, adr, period1 FROM busanmove";
     $getResults2 = sqlsrv_query($conn,$sql);
     while ($row2 = sqlsrv_fetch_array($getResults2, SQLSRV_FETCH_ASSOC)){
       $lat1[] = $row2['lat'];
       $lng1[] = $row2['lng'];
       $period1[] = $row2['period1'];
+      $adr[] = $row2['adr'];
     }
     // echo $lat1[0].", ".$lng1[0].", ".$period1[0]."<br>";
     // echo $lat1[1].", ".$lng1[1].", ".$period1[1];
@@ -8285,7 +8287,7 @@ function displayArea(area) {
           })
           markers2.push(marker2);
 
-          var infowindow2 = new kakao.maps.InfoWindow({content : '<div style="padding:5px;">위치 : <br><p>기간 : <? echo $period1[$mk2]; ?>일 경과</p></div>', removable : true , zindex : 1});
+          var infowindow2 = new kakao.maps.InfoWindow({content : '<div style="padding:5px;">위치 : <? echo $adr[$mk2]; ?> <br><p>기간 : <? echo $period1[$mk2]; ?>일 경과</p></div>', removable : true , zindex : 1});
           kakao.maps.event.addListener(marker2, 'click', makerClick(map,marker2,infowindow2));
         }
         
@@ -8314,16 +8316,16 @@ function showPolygons() {
   setMarker1(null);
   setMarker2(null)
 }
-function showMarker1(){
+function showMarker1() {
   setMarker1(map);
 }
-function showMarker2(){
+function showMarker2() {
   setMarker2(map);
 }
-function deleterMarker1(){
+function deleterMarker1() {
   setMarker1(null);
 }
-function deleterMarker2(){
+function deleterMarker2() {
   setMarker2(null);
 }
 function makerClick(map, marker, infowindow) {
