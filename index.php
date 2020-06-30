@@ -43,7 +43,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
 
     $sql = "DROP TABLE busanmove1;";
     $getResults = sqlsrv_query($conn,$sql);
-    $sql = "CREATE TABLE busanmove1(num int primary key, lat nvarchar(50), lng nvarchar(50), adr nvarchar(100), date1 varchar(50), sysdate varchar(50), period int);";
+    $sql = "CREATE TABLE busanmove1(num int primary key, lat nvarchar(50), lng nvarchar(50), adr nvarchar(100), date1 varchar(50), sysdate1 varchar(50), period1 int);";
     $getResults = sqlsrv_query($conn,$sql);
 
     $row = 1;
@@ -68,13 +68,13 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
     fclose($handle);
     $lat1 = [];
     $lng1 = [];
-    $period = [];
-    $sql = "SELECT lat, lng, period FROM busanmove1";
+    $period1 = [];
+    $sql = "SELECT lat, lng, period1 FROM busanmove1";
     $getResults2 = sqlsrv_query($conn,$sql);
     while ($row2 = sqlsrv_fetch_array($getResults2, SQLSRV_FETCH_ASSOC)){
       $lat1[] = $row2['lat'];
       $lng1[] = $row2['lng'];
-      $period[] = $row2['period'];
+      $period1[] = $row2['period1'];
     }
     // echo $lat1[0].", ".$lng1[0].", ".$period[0]."<br>";
     // echo $lat1[1].", ".$lng1[1].", ".$period[1];
