@@ -8284,7 +8284,7 @@ function displayArea(area) {
           })
           markers2.push(marker2);
 
-          var infowindow2 = new kakao.maps.InfoWindow({content : '<div style="padding:5px;">위치 : <? echo $adr[$mk2]; ?> <br><p>기간 : <? echo $period1[$mk2]; ?>일 경과</p></div>', removable : true , zindex : 1});
+          var infowindow2 = new kakao.maps.InfoWindow({content : '<div style="padding:5px;">위치 : <? echo $adr[$mk2]; ?> <br><p>기간 : <? echo $period1[$mk2]; ?>일 경과<br></p><p>소독 여부 : O </p></div>', removable : true , zindex : 1});
           kakao.maps.event.addListener(marker2, 'click', makerClick(map,marker2,infowindow2));
         }
         
