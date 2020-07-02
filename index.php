@@ -251,7 +251,8 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
     }?>
     </table>
 </div>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f6e4b36ec6c88cd63ebbe33a1dda73f2"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f6e4b36ec6c88cd63ebbe33a1dda73f2&libraries=services"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
 <script>
   var areas = [
     {
@@ -7527,7 +7528,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
           new kakao.maps.LatLng(35.32848765,126.3791358),
           new kakao.maps.LatLng(35.38699361,126.4064373),
           new kakao.maps.LatLng(35.41711699,126.407051),
- new kakao.maps.LatLng( 35.429611174263819  ,126.4477872)
+          new kakao.maps.LatLng(35.42961117,126.4477872)
         ]
     }, {
         name : '광주광역시',
@@ -7645,7 +7646,6 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
           new kakao.maps.LatLng(35.25213765,126.7425892),
           new kakao.maps.LatLng(35.25116661,126.7425921),
           new kakao.maps.LatLng(35.25857043,126.761049)
-
         ]
     }, {
         name : '경기도',
@@ -8285,7 +8285,7 @@ function displayArea(area) {
           })
           markers2.push(marker2);
 
-          var infowindow2 = new kakao.maps.InfoWindow({content : '<div style="padding:5px;">위치 : <? echo $adr[$mk2]; ?> <br><p>기간 : <? echo $period1[$mk2]; ?>일 경과</p></div>', removable : true , zindex : 1});
+          var infowindow2 = new kakao.maps.InfoWindow({content : '<div style="padding:5px;">위치 : <? echo $adr[$mk2]; ?> <br><p>기간 : <? echo $period1[$mk2]; ?>일 경과<br></p><p>소독 여부 : <? echo $sodok[$mk2]; ?></p></div>', removable : true , zindex : 1});
           kakao.maps.event.addListener(marker2, 'click', makerClick(map,marker2,infowindow2));
         }
         
