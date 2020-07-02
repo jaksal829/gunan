@@ -27,7 +27,8 @@
 <body>
 <div id="map" style="width:100%;height:1024px;"></div>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f6e4b36ec6c88cd63ebbe33a1dda73f2"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c564aa9dfa0c70f5fd1a02484baf5e9&libraries=services"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
 <script>
  $.getJSON("korea.geojson", function(geojson) {
  
